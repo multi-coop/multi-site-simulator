@@ -5,13 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css"> -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+    <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script> -->
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <!-- <div id="app"></div> -->
     <!-- built files will be auto injected -->
+    <my-web-component 
+      msg="this is the simulator"
+      partValue="25"
+      minBenefs="40000"
+      benefs="100000"
+      repart='{
+        "reserves":0.4,
+        "interesment":0.5,
+        "dividendes":0.1
+      }'
+      team='[
+        { "name":"Albert", "parts":100, "workTime":1 }, 
+        { "name":"Bénédicte", "parts":250, "workTime":0.8 }, 
+        { "name":"Camille", "parts":0, "workTime":1 }, 
+        { "name":"Dave", "parts": 200, "workTime":0.2 }
+      ]'
+    />
   </body>
 </html>
