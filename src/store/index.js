@@ -7,10 +7,16 @@ export default new Vuex.Store({
   state: {
     test: 'test value from store',
     partValue: 25,
-    minBenefs: 40000,
+
+    benefsOptions: { min: 40000, max: 300000, ticks: 10000, unit: '€' },
+
     reserves: 40,
     interesment: 50,
     dividendes: 10,
+    reservesOptions: { min: 15, max: 75, ticks: 5, unit: '%', substract: 'interesment' },
+    interesmentOptions: { min: 25, max: 84, ticks: 5, unit: '%', substract: 'reserves' },
+    dividendesOptions: { min: 0, max: 33, ticks: 5, unit: '%', substract: 'interesment' },
+
     benefs: 0,
     members: [],
     emptyMember: {
@@ -28,6 +34,12 @@ export default new Vuex.Store({
     },
     getDividendes: (state) => {
       return state.dividendes
+    },
+    getKeyVal: (state) => (key) => {
+      return state[key]
+    },
+    getValOptions: (state) => (key) => {
+      return state[`${key}Options`]
     },
     repartBenefs: (state) => {
       return {
@@ -52,6 +64,30 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    populateRepart ({ state, commit, getters }, obj) {
+      const keys = ['reserves', 'interesment', 'dividendes']
+      console.log('S > A > populateRepart > obj : ', obj)
+
+      // set vallue from user
+      commit('setValue', obj)
+      const options = getters.getValOptions(obj.space)
+      console.log('S > A > populateRepart > options : ', options)
+      const keyToSubstract = options.substract
+
+      // set value substract
+      if (keyToSubstract) {
+        const keysToCompute = [obj.space, keyToSubstract]
+        const keyToAdd = keys.find(k => !keysToCompute.includes(k))
+        const totalPartial = obj.value + state[keyToAdd]
+        console.log('S > A > populateRepart > totalPartial : ', totalPartial)
+        const subval = 100 - totalPartial
+        const objToSet = {
+          space: keyToSubstract,
+          value: subval
+        }
+        commit('setValue', objToSet)
+      }
+    },
     populateValue ({ commit }, obj) {
       commit('setValue', obj)
     }

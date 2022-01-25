@@ -55,46 +55,60 @@
     <!-- VALUES -->
     <div class="section">
       <div class="columns is-multiline">
+
+        <!-- benefs -->
         <div class="column is-full">
           <ValueSliderMulti
-            :label="'benefs'"
+            :keyVal="'benefs'"
             :val="benefsEntreprise"
             :max="300000"
             :min="0"
             :ticks="10000"
             :unit="'€'"
           />
+          {{ getVal('benefs') }} €
         </div>
+
+        <!-- reserves -->
         <div class="column">
           <ValueSliderMulti
-            :label="'reserves'"
+            :keyVal="'reserves'"
             :val="reservesEntreprise"
-            :max="75"
-            :min="15"
-            :ticks="5"
             :unit="'%'"
           />
+          {{ benefsEntreprise }} €
+          x
+          {{ getVal('reserves') }} %
+          =
+          {{ benefsEntreprise * getVal('reserves') / 100 }} €
         </div>
+        <!-- interessement -->
         <div class="column">
           <ValueSliderMulti
-            :label="'interesment'"
+            :keyVal="'interesment'"
             :val="interesmentEntreprise"
-            :max="84"
-            :min="25"
-            :ticks="5"
             :unit="'%'"
           />
+          {{ benefsEntreprise }} €
+          x
+          {{ getVal('interesment') }} %
+          =
+          {{ benefsEntreprise * getVal('interesment') / 100 }} €
         </div>
+        <!-- dividendes -->
         <div class="column">
           <ValueSliderMulti
-            :label="'dividendes'"
+            :keyVal="'dividendes'"
             :val="dividendesEntreprise"
-            :max="33"
-            :min="0"
-            :ticks="5"
             :unit="'%'"
           />
+          {{ benefsEntreprise }} €
+          x
+          {{ getVal('dividendes') }} %
+          =
+          {{ benefsEntreprise * getVal('dividendes') / 100 }} €
         </div>
+
       </div>
     </div>
 
@@ -185,7 +199,8 @@ export default {
       interesmentEntreprise: 'getInteresment',
       dividendesEntreprise: 'getDividendes',
       repartBenefs: 'repartBenefs',
-      totals: 'totals'
+      totals: 'totals',
+      getVal: 'getKeyVal'
     })
   },
   methods: {
