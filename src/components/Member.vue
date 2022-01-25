@@ -8,7 +8,7 @@
             name : {{ dataMember.name }}
           </p>
           <p>
-            parts : {{ dataMember.parts }}
+            parts : {{ dataMember.parts }} parts
           </p>
           <p>
             workTime : {{ dataMember.workTime * 100 }} %
@@ -16,6 +16,9 @@
         </div>
 
         <div class="column">
+          <p>
+            parts share : {{ (dataMember.parts * 100 / totals.partsTotal).toFixed(1) }} %
+          </p>
           <p>
             partsValue : {{ dataMember.parts * partValue }} €
           </p>
@@ -62,6 +65,7 @@ export default {
       benefsEntreprise: (state) => state.benefs
     }),
     ...mapGetters({
+      totals: 'totals',
       getShares: 'getShares'
     })
   },
