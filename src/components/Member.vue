@@ -5,8 +5,10 @@
 
         <div class="column">
           <p>
-            name : {{ dataMember.name }}
+            name :
+            <strong>{{ dataMember.name }}</strong>
           </p>
+          <br>
           <p>
             parts : {{ dataMember.parts }} parts
           </p>
