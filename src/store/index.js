@@ -6,8 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     test: 'test value from store',
-    partValue: 25,
 
+    partValue: 25,
+    partValueOptions: { min: 16, max: 75, ticks: 1, unit: '€' },
+
+    benefs: 0,
     benefsOptions: { min: 40000, max: 300000, ticks: 10000, unit: '€' },
 
     reserves: 40,
@@ -17,7 +20,8 @@ export default new Vuex.Store({
     interesmentOptions: { min: 25, max: 84, ticks: 5, unit: '%', substract: 'reserves' },
     dividendesOptions: { min: 0, max: 33, ticks: 5, unit: '%', substract: 'interesment' },
 
-    benefs: 0,
+    worktTimeOptions: { min: 0, max: 100, ticks: 5, unit: '%' },
+
     members: [],
     emptyMember: {
       name: 'new member',
@@ -56,6 +60,18 @@ export default new Vuex.Store({
         workTimeTotal: state.team.map(m => m.workTime).reduce((prev, curr) => prev + curr, 0),
         partsTotal: state.team.map(m => m.parts).reduce((prev, curr) => prev + curr, 0)
       }
+    },
+    getShares: (state, getters) => (key) => {
+      const totals = getters.totals
+      const benefs = getters.repartBenefs
+      const valRepart = state[key]
+      // console.log('S > G > getShares > valRepart : ', valRepart)
+      return {
+        key: key,
+        totals: totals,
+        benefs: benefs,
+        valRepart: valRepart / 100
+      }
     }
   },
   mutations: {
@@ -66,12 +82,12 @@ export default new Vuex.Store({
   actions: {
     populateRepart ({ state, commit, getters }, obj) {
       const keys = ['reserves', 'interesment', 'dividendes']
-      console.log('S > A > populateRepart > obj : ', obj)
+      // console.log('S > A > populateRepart > obj : ', obj)
 
       // set vallue from user
       commit('setValue', obj)
       const options = getters.getValOptions(obj.space)
-      console.log('S > A > populateRepart > options : ', options)
+      // console.log('S > A > populateRepart > options : ', options)
       const keyToSubstract = options.substract
 
       // set value substract
@@ -79,7 +95,7 @@ export default new Vuex.Store({
         const keysToCompute = [obj.space, keyToSubstract]
         const keyToAdd = keys.find(k => !keysToCompute.includes(k))
         const totalPartial = obj.value + state[keyToAdd]
-        console.log('S > A > populateRepart > totalPartial : ', totalPartial)
+        // console.log('S > A > populateRepart > totalPartial : ', totalPartial)
         const subval = 100 - totalPartial
         const objToSet = {
           space: keyToSubstract,

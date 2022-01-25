@@ -30,8 +30,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-
-// import { Slider, Field } from 'buefy'
+// import { mixin } from './utils.js'
 
 export default {
   name: 'ValueSliderMulti',
@@ -55,8 +54,8 @@ export default {
   },
   watch: {
     valFromStore (next, prev) {
-      console.log('C - ValueSliderMulti > watch > valFromStore > prev :', prev)
-      console.log('C - ValueSliderMulti > watch > valFromStore > next :', next)
+      // console.log('C - ValueSliderMulti > watch > valFromStore > prev :', prev)
+      // console.log('C - ValueSliderMulti > watch > valFromStore > next :', next)
       this.numberInput = next
     }
   },

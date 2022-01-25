@@ -5,6 +5,7 @@
       >
       <!-- DEBUG -->
       <div
+        v-if="false"
         class="columns is-multiline"
         >
         <div class="column">
@@ -57,16 +58,21 @@
       <div class="columns is-multiline">
 
         <!-- benefs -->
-        <div class="column is-full">
+        <div class="column is-two-thirds">
           <ValueSliderMulti
             :keyVal="'benefs'"
             :val="benefsEntreprise"
-            :max="300000"
-            :min="0"
-            :ticks="10000"
-            :unit="'€'"
           />
           {{ getVal('benefs') }} €
+        </div>
+
+        <!-- partValue -->
+        <div class="column is-one-third">
+          <ValueSliderMulti
+            :keyVal="'partValue'"
+            :val="partValue"
+          />
+          {{ getVal('partValue') }} €
         </div>
 
         <!-- reserves -->
@@ -74,7 +80,6 @@
           <ValueSliderMulti
             :keyVal="'reserves'"
             :val="reservesEntreprise"
-            :unit="'%'"
           />
           {{ benefsEntreprise }} €
           x
@@ -87,7 +92,6 @@
           <ValueSliderMulti
             :keyVal="'interesment'"
             :val="interesmentEntreprise"
-            :unit="'%'"
           />
           {{ benefsEntreprise }} €
           x
@@ -100,7 +104,6 @@
           <ValueSliderMulti
             :keyVal="'dividendes'"
             :val="dividendesEntreprise"
-            :unit="'%'"
           />
           {{ benefsEntreprise }} €
           x
@@ -158,8 +161,8 @@ export default {
   props: {
     msg: String,
     locale: String,
-    partValue: Number,
-    minBenefs: Number,
+    partvalue: Number,
+    minbenefs: Number,
     benefs: Number,
     repart: String,
     team: String
@@ -173,16 +176,19 @@ export default {
   },
   beforeMount () {
     // console.log('C - MultiSimulator > beforeMount > this.benefs :', this.benefs)
-    console.log('C - MultiSimulator > beforeMount > this.repart :', this.repart)
+    // console.log('C - MultiSimulator > beforeMount > this.repart :', this.repart)
+    // console.log('C - MultiSimulator > beforeMount > this.partvalue :', this.partvalue)
+    // console.log('C - MultiSimulator > beforeMount > this.minbenefs :', this.minbenefs)
+    // console.log('C - MultiSimulator > beforeMount > this.benefs :', this.benefs)
     // console.log('C - MultiSimulator > beforeMount > this.team :', this.team)
     // this.benefsEntreprise = this.benefs
     // this.repartEntreprise = JSON.parse(this.repart)
     // this.teamEntreprise = JSON.parse(this.team)
-    this.populateValue({ space: 'partValue', value: this.partValue })
-    this.populateValue({ space: 'minBenefs', value: this.minBenefs })
+    this.populateValue({ space: 'partValue', value: this.partvalue })
+    this.populateValue({ space: 'minBenefs', value: this.minbenefs })
     this.populateValue({ space: 'benefs', value: this.benefs })
     const repart = JSON.parse(this.repart)
-    console.log('C - MultiSimulator > beforeMount > repart :', repart)
+    // console.log('C - MultiSimulator > beforeMount > repart :', repart)
     this.populateValue({ space: 'reserves', value: repart.reserves * 100 })
     this.populateValue({ space: 'interesment', value: repart.interesment * 100 })
     this.populateValue({ space: 'dividendes', value: repart.dividendes * 100 })
@@ -192,7 +198,8 @@ export default {
     ...mapState({
       testFromStore: (state) => state.test,
       benefsEntreprise: (state) => state.benefs,
-      teamEntreprise: (state) => state.team
+      teamEntreprise: (state) => state.team,
+      partValue: (state) => state.partValue
     }),
     ...mapGetters({
       reservesEntreprise: 'getReserves',
