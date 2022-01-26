@@ -93,34 +93,53 @@
 
       </section>
 
-      <!-- <div class="columns">
+      <div class="columns is-mobile mb-0 has-text-centered">
         <div class="column">
-          <p>{{ t('partsShare') }} :</p>
-          <strong>
-            {{ (parts * 100 / totals.partsTotal).toFixed(1) }} %
-          </strong>
+          <p class="is-size-7">
+            {{ t('partsShare') }}
+          </p>
         </div>
         <div class="column">
-          {{ t('partsValue') }} :<br>
-          <strong>
-            {{ parts * partValue }} €
-          </strong>
+          <p class="is-size-7">
+            {{ t('partsValue') }}
+          </p>
         </div>
         <div class="column">
-          {{ t('participation') }} :<br>
-          <strong>
-            {{ getShareByKey('participation').sum }} €
-          </strong>
+          <p class="is-size-7">
+            {{ t('participation') }}
+          </p>
         </div>
         <div class="column">
-          {{ t('dividendes') }} :<br>
-          <strong>
-            {{ getShareByKey('dividendes').sum }} €
-          </strong>
+          <p class="is-size-7">
+              {{ t('dividendes') }}
+          </p>
         </div>
-      </div> -->
+      </div>
 
-      <nav class="level">
+      <div class="columns is-mobile has-text-centered">
+        <div class="column">
+          <p class="title is-6 has-text-primary">
+            {{ (parts * 100 / totals.partsTotal).toFixed(1).toLocaleString() }} %
+          </p>
+        </div>
+        <div class="column">
+          <p class="title is-6 has-text-primary">
+            {{( parts * partValue).toLocaleString() }} €
+          </p>
+        </div>
+        <div class="column">
+          <p class="title is-6 has-text-primary">
+            {{ getShareByKey('participation').sum.toLocaleString() }} €
+          </p>
+        </div>
+        <div class="column">
+          <p class="title is-6 has-text-primary">
+            {{ getShareByKey('dividendes').sum.toLocaleString() }} €
+          </p>
+        </div>
+      </div>
+
+      <!-- <nav class="level">
         <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
           <div>
             <p class="label is-size-7">
@@ -161,7 +180,7 @@
             </p>
           </div>
         </div>
-      </nav>
+      </nav> -->
 
     </div>
 
@@ -185,9 +204,9 @@
 </template>
 
 <style  scoped>
-.label {
+/* .label {
   height: 40px;
-}
+} */
 /* .b-slider-thumb span {
   font-size: .85em !important;
 } */
