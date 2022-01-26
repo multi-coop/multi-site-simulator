@@ -278,7 +278,7 @@ export default {
     }
   },
   beforeDestroy () {
-    this.resetTeam()
+    // this.resetTeam()
   }
 }
 </script>
