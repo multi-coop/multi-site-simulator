@@ -16,7 +16,9 @@ import MultiSimulator from './components/MultiSimulator.vue'
 
 Vue.config.productionTip = false
 
-Vue.use(Buefy)
+Vue.use(Buefy, {
+  defaultIconPack: 'mdi'
+})
 
 MultiSimulator.store = store
 // MultiSimulator.router = router
@@ -30,5 +32,7 @@ MultiSimulator.store = store
 // const WrappedElement = wrap(Vue, MultiSimulator)
 // window.customElements.define('my-web-component', WrappedElement)
 
-Vue.use(vueCustomElement)
-Vue.customElement('my-web-component', MultiSimulator)
+Vue.use(vueCustomElement, {
+  shadow: true
+})
+Vue.customElement('multi-shares-simulator', MultiSimulator)

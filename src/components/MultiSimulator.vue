@@ -24,18 +24,12 @@
             <code>{{ reservesEntreprise }}</code>
           </p>
           <p>
-            interesmentEntreprise :
-            <code>{{ interesmentEntreprise }}</code>
+            participationEntreprise :
+            <code>{{ participationEntreprise }}</code>
           </p>
           <p>
             dividendesEntreprise :
             <code>{{ dividendesEntreprise }}</code>
-          </p>
-        </div>
-        <div class="column">
-          <p>
-            teamEntreprise :<br>
-            <code><pre>{{ teamEntreprise }}</pre></code>
           </p>
         </div>
         <div class="column">
@@ -50,12 +44,24 @@
             <code><pre>{{ totals }}</pre></code>
           </p>
         </div>
+        <div class="column">
+          <p>
+            teamMembers :<br>
+            <code><pre>{{ teamMembers }}</pre></code>
+          </p>
+        </div>
       </div>
     </div>
 
+    <!-- DEBUG ICON -->
+    <b-icon
+      icon="home"
+    />
+
     <!-- VALUES -->
     <div class="section">
-      <div class="columns is-multiline">
+
+      <div class="columns is-8 is-multiline mb-6">
 
         <!-- benefs -->
         <div class="column is-two-thirds">
@@ -63,7 +69,9 @@
             :keyVal="'benefs'"
             :val="benefsEntreprise"
           />
-          {{ getVal('benefs') }} €
+          <strong>
+            {{ getVal('benefs') }} €
+          </strong>
         </div>
 
         <!-- partValue -->
@@ -72,9 +80,14 @@
             :keyVal="'partValue'"
             :val="partValue"
           />
-          {{ getVal('partValue') }} €
+          <strong>
+            {{ getVal('partValue') }} €
+          </strong>
         </div>
 
+      </div>
+
+      <div class="columns is-8 is-multiline">
         <!-- reserves -->
         <div class="column">
           <ValueSliderMulti
@@ -85,19 +98,23 @@
           x
           {{ getVal('reserves') }} %
           =
-          {{ benefsEntreprise * getVal('reserves') / 100 }} €
+          <strong>
+            {{ benefsEntreprise * getVal('reserves') / 100 }} €
+          </strong>
         </div>
         <!-- interessement -->
         <div class="column">
           <ValueSliderMulti
-            :keyVal="'interesment'"
-            :val="interesmentEntreprise"
+            :keyVal="'participation'"
+            :val="participationEntreprise"
           />
           {{ benefsEntreprise }} €
           x
-          {{ getVal('interesment') }} %
+          {{ getVal('participation') }} %
           =
-          {{ benefsEntreprise * getVal('interesment') / 100 }} €
+          <strong>
+            {{ benefsEntreprise * getVal('participation') / 100 }} €
+          </strong>
         </div>
         <!-- dividendes -->
         <div class="column">
@@ -109,23 +126,32 @@
           x
           {{ getVal('dividendes') }} %
           =
-          {{ benefsEntreprise * getVal('dividendes') / 100 }} €
+          <strong>
+            {{ benefsEntreprise * getVal('dividendes') / 100 }} €
+          </strong>
         </div>
 
       </div>
     </div>
 
     <!-- MEMBERS -->
-    <div class="section">
-      <Member
-        v-for="(member, idx) in teamEntreprise"
-        :key="`member-${idx}-${member}`"
-        :memberData="member"
-      />
-      <b-button>
-        add member + {{ testFromStore }}
-      </b-button>
+    <div class="columns is-multiline mt-6">
+      <div
+        v-for="member in teamMembers"
+        :key="member.key"
+        class="column is-half"
+        >
+        <Member
+          :memberData="member"
+          :keyMember="member.key"
+        />
+      </div>
     </div>
+    <b-button
+      @click="addMember()"
+      >
+      {{ t('addMember') }}
+    </b-button>
   </div>
 </template>
 
@@ -137,7 +163,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import Member from '@/components/Member'
 import ValueSliderMulti from '@/components/ValueSliderMulti'
 
-// import 'buefy/dist/buefy.css'
+import 'buefy/dist/buefy.css'
 
 export default {
   name: 'MultiSimulator',
@@ -148,7 +174,7 @@ export default {
       ],
       link: [
         // { rel: 'icon', href: this.iconUrl, sizes: '32x32' },
-        // { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css' },
+        // { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css' }
         // { rel: 'stylesheet', href: 'https://unpkg.com/buefy/dist/buefy.min.css' }
       ]
     }
@@ -159,7 +185,6 @@ export default {
     ValueSliderMulti
   },
   props: {
-    msg: String,
     locale: String,
     partvalue: Number,
     minbenefs: Number,
@@ -184,36 +209,48 @@ export default {
     // this.benefsEntreprise = this.benefs
     // this.repartEntreprise = JSON.parse(this.repart)
     // this.teamEntreprise = JSON.parse(this.team)
+    this.populateValue({ space: 'locale', value: this.locale })
     this.populateValue({ space: 'partValue', value: this.partvalue })
     this.populateValue({ space: 'minBenefs', value: this.minbenefs })
     this.populateValue({ space: 'benefs', value: this.benefs })
     const repart = JSON.parse(this.repart)
     // console.log('C - MultiSimulator > beforeMount > repart :', repart)
     this.populateValue({ space: 'reserves', value: repart.reserves * 100 })
-    this.populateValue({ space: 'interesment', value: repart.interesment * 100 })
+    this.populateValue({ space: 'participation', value: repart.participation * 100 })
     this.populateValue({ space: 'dividendes', value: repart.dividendes * 100 })
-    this.populateValue({ space: 'team', value: JSON.parse(this.team) })
+
+    const rawTeam = JSON.parse(this.team)
+    // this.populateValue({ space: 'team', value: rawTeam })
+    rawTeam.forEach((member) => {
+      const rand = Math.floor(Math.random() * (100000)) + 1
+      const memberKey = `member-${rand}`
+      this.populateTeamMembers({ action: 'push', member: { key: memberKey, ...member } })
+    })
   },
   computed: {
     ...mapState({
-      testFromStore: (state) => state.test,
       benefsEntreprise: (state) => state.benefs,
-      teamEntreprise: (state) => state.team,
-      partValue: (state) => state.partValue
+      partValue: (state) => state.partValue,
+      teamMembers: (state) => state.teamMembers
     }),
     ...mapGetters({
       reservesEntreprise: 'getReserves',
-      interesmentEntreprise: 'getInteresment',
+      participationEntreprise: 'getparticipation',
       dividendesEntreprise: 'getDividendes',
       repartBenefs: 'repartBenefs',
       totals: 'totals',
-      getVal: 'getKeyVal'
+      getVal: 'getKeyVal',
+      t: 'getTranslation'
     })
   },
   methods: {
     ...mapActions({
-      populateValue: 'populateValue'
-    })
+      populateValue: 'populateValue',
+      populateTeamMembers: 'populateTeamMembers'
+    }),
+    addMember () {
+      this.populateTeamMembers({ action: 'add' })
+    }
   }
 }
 </script>

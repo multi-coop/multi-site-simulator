@@ -1,32 +1,51 @@
 <template>
   <section>
-    <div class="block">
-      <!-- <b-field grouped :label="keyVal">
+    <div
+      class="block"
+      >
+      <!-- <b-field
+        :label="t(keyVal)"
+        class="mb-5"
+        >
         <b-numberinput
           v-model="numberInput"
-          :max="max"
-          :min="min"
-          :step="ticks"
+          :max="options.max"
+          :min="options.min"
+          :step="options.ticks"
           size="is-small"
-          type="number"
+          controls-position="compact"
+          controls-rounded
+          @input="changeVal"
+          expanded
+          :custom-formatter="(valTxt) => valTxt + options.unit"
         />
       </b-field> -->
-      <b-field :label="keyVal">
+      <b-field
+        :label="t(keyVal)"
+        class=""
+        >
         <b-slider
           v-model="numberInput"
           :max="options.max"
           :min="options.min"
           :step="options.ticks"
           :tooltip="false"
-          ticks
-          @change="changeVal"
           indicator
+          ticks
+          size="is-small"
+          @input="changeVal"
           :custom-formatter="(valTxt) => valTxt + options.unit"
         />
       </b-field>
     </div>
   </section>
 </template>
+
+<style>
+.tooltip-trigger {
+  /* min-width: 85px !important; */
+}
+</style>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
@@ -73,7 +92,8 @@ export default {
       // repartBenefs: 'repartBenefs',
       // totals: 'totals',
       getVal: 'getKeyVal',
-      getValOptions: 'getValOptions'
+      getValOptions: 'getValOptions',
+      t: 'getTranslation'
     }),
     valFromStore () {
       return this.getVal(this.keyVal)

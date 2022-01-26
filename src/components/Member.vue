@@ -1,65 +1,206 @@
 <template>
   <div class="card mb-2">
     <div class="card-content">
-      <div class="columns">
-
-        <div class="column">
-          <p>
-            name :
-            <strong>{{ dataMember.name }}</strong>
-          </p>
-          <br>
-          <p>
-            parts : {{ dataMember.parts }} parts
-          </p>
-          <p>
-            workTime : {{ dataMember.workTime * 100 }} %
-          </p>
+      <div class="level">
+        <!-- DEBUG -->
+        <div
+          class="level-left"
+          >
+          <div
+            class="level-item has-text-weight-bold is-uppercase"
+            >
+            <!-- keyMember : {{ keyMember }} -->
+            {{ name }}
+          </div>
         </div>
-
-        <div class="column">
-          <p>
-            parts share : {{ (dataMember.parts * 100 / totals.partsTotal).toFixed(1) }} %
-          </p>
-          <p>
-            partsValue : {{ dataMember.parts * partValue }} €
-          </p>
-          <p>
-            interesment : {{ getShareByKey('interesment').sum }} €
-            <!-- <br>
-            <code><pre>
-              {{ getShareByKey('interesment') }} €
-            </pre></code> -->
-          </p>
-          <p>
-            dividendes : {{ getShareByKey('dividendes').sum }} €
-            <!-- <br>
-            <code><pre>
-              {{ getShareByKey('dividendes') }} €
-            </pre></code> -->
-          </p>
+        <div class="level-right">
+          <div class="level-item">
+            <b-button
+              size="is-small"
+              @click="deleteMember()"
+              >
+              {{ t('deleteMember') }}
+            </b-button>
+          </div>
         </div>
-
       </div>
+    </div>
+
+    <div class="card-content">
+      <section>
+
+        <b-field
+          :label="t('name')"
+          horizontal
+          >
+          <b-input
+            v-model="name"
+            size="is-small"
+            @input="updateMember()"
+            expanded
+          />
+        </b-field>
+
+        <b-field
+          :label="t('workTime')"
+          class="mb-5"
+          horizontal
+          >
+          <!-- <b-numberinput
+            v-model="workTime"
+            size="is-small"
+            controls-position="compact"
+            :step="20"
+            @input="updateMember()"
+            expanded
+          /> -->
+          <b-slider
+            v-model="workTime"
+            :max="100"
+            :min="0"
+            :step="20"
+            :tooltip="false"
+            ticks
+            size="is-small"
+            indicator
+            :custom-formatter="(valTxt) => `${valTxt}%`"
+            @input="updateMember()"
+          />
+        </b-field>
+
+        <b-field
+          :label="t('parts')"
+          class="mb-5"
+          horizontal
+          >
+          <!-- <b-numberinput
+            v-model="parts"
+            size="is-small"
+            controls-position="compact"
+            @input="updateMember()"
+            expanded
+          /> -->
+          <b-slider
+            v-model="parts"
+            :max="120"
+            :min="0"
+            :step="10"
+            :tooltip="false"
+            ticks
+            size="is-small"
+            indicator
+            :custom-formatter="(valTxt) => `${valTxt}.${t('partsShort')}`"
+            @input="updateMember()"
+          />
+        </b-field>
+
+      </section>
+
+      <!-- <div class="columns">
+        <div class="column">
+          <p>{{ t('partsShare') }} :</p>
+          <strong>
+            {{ (parts * 100 / totals.partsTotal).toFixed(1) }} %
+          </strong>
+        </div>
+        <div class="column">
+          {{ t('partsValue') }} :<br>
+          <strong>
+            {{ parts * partValue }} €
+          </strong>
+        </div>
+        <div class="column">
+          {{ t('participation') }} :<br>
+          <strong>
+            {{ getShareByKey('participation').sum }} €
+          </strong>
+        </div>
+        <div class="column">
+          {{ t('dividendes') }} :<br>
+          <strong>
+            {{ getShareByKey('dividendes').sum }} €
+          </strong>
+        </div>
+      </div> -->
+
+      <nav class="level">
+        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
+          <div>
+            <p class="label is-size-7">
+              {{ t('partsShare') }}
+            </p>
+            <p class="title is-6">
+              {{ (parts * 100 / totals.partsTotal).toFixed(1) }} %
+            </p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
+          <div>
+            <p class="label is-size-7">
+              {{ t('partsValue') }}
+            </p>
+            <p class="title is-6">
+              {{ parts * partValue }} €
+            </p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
+          <div>
+            <p class="label is-size-7">
+              {{ t('participation') }}
+            </p>
+            <p class="title is-6">
+              {{ getShareByKey('participation').sum }} €
+            </p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
+          <div>
+            <p class="label is-size-7">
+              {{ t('dividendes') }}
+            </p>
+            <p class="title is-6">
+              {{ getShareByKey('dividendes').sum }} €
+            </p>
+          </div>
+        </div>
+      </nav>
+
     </div>
   </div>
 </template>
 
+<style  scoped>
+.label {
+  height: 40px;
+}
+/* .b-slider-thumb span {
+  font-size: .85em !important;
+} */
+</style>
+
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Member',
   props: {
-    memberData: Object
+    memberData: Object,
+    keyMember: String
   },
   data () {
     return {
-      dataMember: {}
+      dataMember: {},
+      name: undefined,
+      parts: undefined,
+      workTime: undefined
     }
   },
   beforeMount () {
     this.dataMember = { ...this.memberData }
+    this.name = this.memberData.name
+    this.parts = this.memberData.parts
+    this.workTime = this.memberData.workTime
   },
   computed: {
     ...mapState({
@@ -68,17 +209,29 @@ export default {
     }),
     ...mapGetters({
       totals: 'totals',
-      getShares: 'getShares'
-    })
+      getShares: 'getShares',
+      t: 'getTranslation'
+    }),
+    memberObject () {
+      return {
+        key: this.keyMember,
+        name: this.name,
+        parts: this.parts,
+        workTime: this.workTime
+      }
+    }
   },
   methods: {
+    ...mapActions({
+      populateTeamMembers: 'populateTeamMembers'
+    }),
     getShareByKey (key) {
-      const vars = this.getShares('interesment')
+      const vars = this.getShares('participation')
       const benefsToshare = vars.benefs[key]
       // console.log('C - Member > getShareByKey > benefsToshare :', benefsToshare)
       let div = 0
       switch (key) {
-        case 'interesment':
+        case 'participation':
           div = this.dataMember.workTime / vars.totals.workTimeTotal
           break
         case 'dividendes':
@@ -91,6 +244,12 @@ export default {
         div: div,
         sum: Math.round(sum)
       }
+    },
+    updateMember () {
+      this.populateTeamMembers({ action: 'update', member: this.memberObject })
+    },
+    deleteMember () {
+      this.populateTeamMembers({ action: 'delete', member: this.memberObject })
     }
   }
 }
