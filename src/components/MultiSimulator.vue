@@ -270,11 +270,15 @@ export default {
   methods: {
     ...mapActions({
       populateValue: 'populateValue',
-      populateTeamMembers: 'populateTeamMembers'
+      populateTeamMembers: 'populateTeamMembers',
+      resetTeam: 'resetTeam'
     }),
     addMember () {
       this.populateTeamMembers({ action: 'add' })
     }
+  },
+  beforeDestroy () {
+    this.resetTeam()
   }
 }
 </script>

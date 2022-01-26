@@ -193,6 +193,9 @@ export default new Vuex.Store({
           commit('deleteMember', member)
           break
       }
+    },
+    resetTeam ({ commit }) {
+      commit('setValue', { space: 'teamMembers', value: [] })
     }
   },
 
