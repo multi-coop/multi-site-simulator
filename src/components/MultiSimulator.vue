@@ -54,9 +54,27 @@
     </div>
 
     <!-- DEBUG ICON -->
-    <b-icon
-      icon="home"
-    />
+    <div class="level">
+      <div class="level-item has-text-centered">
+        <b-icon
+          icon="calculator"
+        />
+        <p class="title mx-5">
+          <span>
+            {{ t('title') }}
+          </span>
+        </p>
+        <b-button
+          icon-left="github"
+          tag="a"
+          href="https://github.com/multi-coop/multi-site-simulator"
+          outlined
+          size="is-small"
+          >
+          {{ t('code') }}
+        </b-button>
+      </div>
+    </div>
 
     <!-- VALUES -->
     <div class="section">
@@ -69,7 +87,7 @@
             :keyVal="'benefs'"
             :val="benefsEntreprise"
           />
-          <strong>
+          <strong class="has-text-primary">
             {{ getVal('benefs') }} €
           </strong>
         </div>
@@ -80,7 +98,7 @@
             :keyVal="'partValue'"
             :val="partValue"
           />
-          <strong>
+          <strong class="has-text-primary">
             {{ getVal('partValue') }} €
           </strong>
         </div>
@@ -98,7 +116,7 @@
           x
           {{ getVal('reserves') }} %
           =
-          <strong>
+          <strong class="has-text-primary">
             {{ benefsEntreprise * getVal('reserves') / 100 }} €
           </strong>
         </div>
@@ -112,7 +130,7 @@
           x
           {{ getVal('participation') }} %
           =
-          <strong>
+          <strong class="has-text-primary">
             {{ benefsEntreprise * getVal('participation') / 100 }} €
           </strong>
         </div>
@@ -126,7 +144,7 @@
           x
           {{ getVal('dividendes') }} %
           =
-          <strong>
+          <strong class="has-text-primary">
             {{ benefsEntreprise * getVal('dividendes') / 100 }} €
           </strong>
         </div>
@@ -148,7 +166,9 @@
       </div>
     </div>
     <b-button
+      icon-left="account-plus"
       @click="addMember()"
+      type="is-primary"
       >
       {{ t('addMember') }}
     </b-button>

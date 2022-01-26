@@ -30,6 +30,12 @@ export default new Vuex.Store({
     },
 
     dict: {
+      title: {
+        fr: 'Simulateur de répartition des excédents de gestion'
+      },
+      code: {
+        fr: 'Code source'
+      },
       benefs: {
         fr: 'Excédents de gestion'
       },

@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="my-4">
     <div
       class="block"
       >

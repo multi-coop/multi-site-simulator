@@ -7,7 +7,7 @@
           class="level-left"
           >
           <div
-            class="level-item has-text-weight-bold is-uppercase"
+            class="level-item has-text-weight-bold is-uppercase has-text-primary is-size-5"
             >
             <!-- keyMember : {{ keyMember }} -->
             {{ name }}
@@ -17,6 +17,9 @@
           <div class="level-item">
             <b-button
               size="is-small"
+              icon-left="account-remove"
+              type="is-primary"
+              outlined
               @click="deleteMember()"
               >
               {{ t('deleteMember') }}
@@ -32,6 +35,7 @@
         <b-field
           :label="t('name')"
           horizontal
+          custom-class="is-small"
           >
           <b-input
             v-model="name"
@@ -44,6 +48,7 @@
         <b-field
           :label="t('workTime')"
           class="mb-5"
+          custom-class="is-small"
           horizontal
           >
           <!-- <b-numberinput
@@ -71,6 +76,7 @@
         <b-field
           :label="t('parts')"
           class="mb-5"
+          custom-class="is-small"
           horizontal
           >
           <!-- <b-numberinput
@@ -129,7 +135,7 @@
             <p class="label is-size-7">
               {{ t('partsShare') }}
             </p>
-            <p class="title is-6">
+            <p class="title is-6 has-text-primary">
               {{ (parts * 100 / totals.partsTotal).toFixed(1) }} %
             </p>
           </div>
@@ -139,7 +145,7 @@
             <p class="label is-size-7">
               {{ t('partsValue') }}
             </p>
-            <p class="title is-6">
+            <p class="title is-6 has-text-primary">
               {{ parts * partValue }} €
             </p>
           </div>
@@ -149,7 +155,7 @@
             <p class="label is-size-7">
               {{ t('participation') }}
             </p>
-            <p class="title is-6">
+            <p class="title is-6 has-text-primary">
               {{ getShareByKey('participation').sum }} €
             </p>
           </div>
@@ -159,7 +165,7 @@
             <p class="label is-size-7">
               {{ t('dividendes') }}
             </p>
-            <p class="title is-6">
+            <p class="title is-6 has-text-primary">
               {{ getShareByKey('dividendes').sum }} €
             </p>
           </div>
