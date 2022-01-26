@@ -24,6 +24,7 @@ export default new Vuex.Store({
     workTimeOptions: { min: 0, max: 100, ticks: 5, unit: '%' },
 
     teamMembers: [],
+    teamMembersDefault: [],
     emptyMember: {
       name: 'new member',
       parts: 100,
@@ -75,6 +76,9 @@ export default new Vuex.Store({
       },
       deleteMember: {
         fr: 'Supprimer ce membre'
+      },
+      reset: {
+        fr: "Réinitialiser l'équipe"
       }
     }
   },
@@ -194,8 +198,12 @@ export default new Vuex.Store({
           break
       }
     },
-    resetTeam ({ commit }) {
-      commit('setValue', { space: 'teamMembers', value: [] })
+    saveTeamDefault ({ state, commit }) {
+      commit('setValue', { space: 'teamMembersDefault', value: [...state.teamMembers] })
+    },
+    resetTeam ({ state, commit }) {
+      // console.log('S > A > resetTeam > state.teamMembersDefault : ', state.teamMembersDefault)
+      commit('setValue', { space: 'teamMembers', value: state.teamMembersDefault })
     }
   },
 

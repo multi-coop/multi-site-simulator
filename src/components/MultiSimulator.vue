@@ -156,8 +156,22 @@
       </div>
     </div>
 
+    <div class="columns is-centered mt-3">
+      <div class="column is-one-third">
+        <b-button
+          icon-left="autorenew"
+          @click="resetTeam()"
+          type="is-grey"
+          outlined
+          expanded
+          >
+          {{ t('reset') }}
+        </b-button>
+      </div>
+    </div>
+
     <!-- MEMBERS -->
-    <div class="columns is-multiline mt-6">
+    <div class="columns is-multiline mt-3">
       <div
         v-for="member in teamMembers"
         :key="member.key"
@@ -250,6 +264,7 @@ export default {
       const memberKey = `member-${rand}`
       this.populateTeamMembers({ action: 'push', member: { key: memberKey, ...member } })
     })
+    this.saveTeamDefault()
   },
   computed: {
     ...mapState({
@@ -271,6 +286,7 @@ export default {
     ...mapActions({
       populateValue: 'populateValue',
       populateTeamMembers: 'populateTeamMembers',
+      saveTeamDefault: 'saveTeamDefault',
       resetTeam: 'resetTeam'
     }),
     addMember () {
@@ -278,7 +294,7 @@ export default {
     }
   },
   beforeDestroy () {
-    // this.resetTeam()
+    this.resetTeam()
   }
 }
 </script>
