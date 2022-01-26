@@ -10,20 +10,11 @@
             class="level-item has-text-weight-bold is-uppercase has-text-primary is-size-5"
             >
             <!-- keyMember : {{ keyMember }} -->
+            <b-icon
+              icon="account"
+              class="mr-3"
+            />
             {{ name }}
-          </div>
-        </div>
-        <div class="level-right">
-          <div class="level-item">
-            <b-button
-              size="is-small"
-              icon-left="account-remove"
-              type="is-primary"
-              outlined
-              @click="deleteMember()"
-              >
-              {{ t('deleteMember') }}
-            </b-button>
           </div>
         </div>
       </div>
@@ -173,6 +164,23 @@
       </nav>
 
     </div>
+
+    <footer class="card-footer">
+      <div
+        class="card-footer-item"
+        >
+        <b-button
+          icon-left="account-remove"
+          type="is-ghost"
+          size="is-small"
+          outlined
+          @click="deleteMember()"
+          >
+          {{ t('deleteMember') }}
+        </b-button>
+      </div>
+    </footer>
+
   </div>
 </template>
 

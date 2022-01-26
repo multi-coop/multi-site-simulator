@@ -55,19 +55,19 @@
 
     <!-- DEBUG ICON -->
     <div class="columns is-vcentered">
-      <div class="column is-one-quarter has-text-centered">
+      <div class="column is-2 has-text-centered">
         <b-icon
           icon="calculator"
         />
       </div>
-      <div class="column is-half has-text-centered">
+      <div class="column is-8 has-text-centered">
         <p class="title mx-5">
           <span>
             {{ t('title') }}
           </span>
         </p>
       </div>
-      <div class="column is-one-quarter has-text-centered">
+      <div class="column is-2 has-text-centered">
         <b-button
           icon-left="github"
           tag="a"
