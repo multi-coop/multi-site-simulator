@@ -54,7 +54,7 @@
     </div>
 
     <!-- DEBUG ICON -->
-    <div class="columns is-vcentered">
+    <div class="columns">
       <div class="column is-2 has-text-centered">
         <b-icon
           icon="calculator"
