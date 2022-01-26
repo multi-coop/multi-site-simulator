@@ -54,16 +54,20 @@
     </div>
 
     <!-- DEBUG ICON -->
-    <div class="level">
-      <div class="level-item has-text-centered">
+    <div class="columns">
+      <div class="column is-one-quarter has-text-centered">
         <b-icon
           icon="calculator"
         />
+      </div>
+      <div class="column is-half has-text-centered">
         <p class="title mx-5">
           <span>
             {{ t('title') }}
           </span>
         </p>
+      </div>
+      <div class="column is-one-quarter has-text-centered">
         <b-button
           icon-left="github"
           tag="a"
