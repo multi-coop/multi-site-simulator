@@ -11,7 +11,7 @@ export default new Vuex.Store({
     partValueOptions: { min: 20, max: 75, ticks: 5, unit: '€' },
 
     benefs: 0,
-    benefsOptions: { min: 40000, max: 300000, ticks: 10000, unit: '€' },
+    benefsOptions: { min: 0, max: 300000, ticks: 10000, unit: '€' },
 
     reserves: 40,
     participation: 50,
