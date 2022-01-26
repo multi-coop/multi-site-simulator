@@ -118,7 +118,9 @@
 
       <div class="columns is-mobile has-text-centered">
         <div class="column">
-          <p class="title is-6 has-text-primary">
+          <p
+            :class="`title is-6 has-text-${(parts * 100 / totals.partsTotal) > 50 ? 'danger' : 'primary' }`"
+            >
             {{ (parts * 100 / totals.partsTotal).toFixed(1).toLocaleString() }} %
           </p>
         </div>
