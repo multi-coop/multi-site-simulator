@@ -8,6 +8,7 @@ export default new Vuex.Store({
     locale: 'fr',
 
     partValue: 25,
+    partMax: 200,
     partValueOptions: { min: 20, max: 75, ticks: 5, unit: '€' },
 
     benefs: 0,

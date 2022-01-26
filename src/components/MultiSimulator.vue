@@ -92,7 +92,7 @@
             :val="benefsEntreprise"
           />
           <strong class="has-text-primary">
-            {{ getVal('benefs') }} €
+            {{ getVal('benefs').toLocaleString() }} €
           </strong>
         </div>
 
@@ -103,7 +103,7 @@
             :val="partValue"
           />
           <strong class="has-text-primary">
-            {{ getVal('partValue') }} €
+            {{ getVal('partValue').toLocaleString() }} €
           </strong>
         </div>
 
@@ -116,12 +116,12 @@
             :keyVal="'reserves'"
             :val="reservesEntreprise"
           />
-          {{ benefsEntreprise }} €
+          {{ benefsEntreprise.toLocaleString() }} €
           x
           {{ getVal('reserves') }} %
           =
           <strong class="has-text-primary">
-            {{ benefsEntreprise * getVal('reserves') / 100 }} €
+            {{ (benefsEntreprise * getVal('reserves') / 100).toLocaleString() }} €
           </strong>
         </div>
         <!-- interessement -->
@@ -130,12 +130,12 @@
             :keyVal="'participation'"
             :val="participationEntreprise"
           />
-          {{ benefsEntreprise }} €
+          {{ benefsEntreprise.toLocaleString() }} €
           x
           {{ getVal('participation') }} %
           =
           <strong class="has-text-primary">
-            {{ benefsEntreprise * getVal('participation') / 100 }} €
+            {{ (benefsEntreprise * getVal('participation') / 100).toLocaleString() }} €
           </strong>
         </div>
         <!-- dividendes -->
@@ -144,12 +144,12 @@
             :keyVal="'dividendes'"
             :val="dividendesEntreprise"
           />
-          {{ benefsEntreprise }} €
+          {{ benefsEntreprise.toLocaleString() }} €
           x
           {{ getVal('dividendes') }} %
           =
           <strong class="has-text-primary">
-            {{ benefsEntreprise * getVal('dividendes') / 100 }} €
+            {{ (benefsEntreprise * getVal('dividendes') / 100).toLocaleString() }} €
           </strong>
         </div>
 

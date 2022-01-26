@@ -79,7 +79,7 @@
           /> -->
           <b-slider
             v-model="parts"
-            :max="120"
+            :max="partMax"
             :min="0"
             :step="10"
             :tooltip="false"
@@ -127,7 +127,7 @@
               {{ t('partsShare') }}
             </p>
             <p class="title is-6 has-text-primary">
-              {{ (parts * 100 / totals.partsTotal).toFixed(1) }} %
+              {{ (parts * 100 / totals.partsTotal).toFixed(1).toLocaleString() }} %
             </p>
           </div>
         </div>
@@ -137,7 +137,7 @@
               {{ t('partsValue') }}
             </p>
             <p class="title is-6 has-text-primary">
-              {{ parts * partValue }} €
+              {{( parts * partValue).toLocaleString() }} €
             </p>
           </div>
         </div>
@@ -147,7 +147,7 @@
               {{ t('participation') }}
             </p>
             <p class="title is-6 has-text-primary">
-              {{ getShareByKey('participation').sum }} €
+              {{ getShareByKey('participation').sum.toLocaleString() }} €
             </p>
           </div>
         </div>
@@ -157,7 +157,7 @@
               {{ t('dividendes') }}
             </p>
             <p class="title is-6 has-text-primary">
-              {{ getShareByKey('dividendes').sum }} €
+              {{ getShareByKey('dividendes').sum.toLocaleString() }} €
             </p>
           </div>
         </div>
@@ -219,7 +219,8 @@ export default {
   computed: {
     ...mapState({
       partValue: (state) => state.partValue,
-      benefsEntreprise: (state) => state.benefs
+      benefsEntreprise: (state) => state.benefs,
+      partMax: (state) => state.partMax
     }),
     ...mapGetters({
       totals: 'totals',

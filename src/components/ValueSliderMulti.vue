@@ -34,7 +34,7 @@
           ticks
           size="is-small"
           @input="changeVal"
-          :custom-formatter="(valTxt) => valTxt + options.unit"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()} ${options.unit}`"
         />
       </b-field>
     </div>
