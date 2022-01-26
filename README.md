@@ -26,9 +26,9 @@ The widget's tag is : `<multi-shares-simulator/>`
 The widget takes several parameters, following this structure :
 
 ```
-  msg="this is the simulator"
+  locale="fr"
   partvalue="25"
-  minbenefs="40000"
+  minbenefs="0"
   benefs="100000"
   repart='{
     "reserves":0.4,
@@ -36,10 +36,11 @@ The widget takes several parameters, following this structure :
     "dividendes":0.1
   }'
   team='[
-    { "name":"Albert", "parts":100, "workTime":1 }, 
-    { "name":"Bénédicte", "parts":250, "workTime":0.8 }, 
-    { "name":"Camille", "parts":0, "workTime":1 }, 
-    { "name":"Dave", "parts": 200, "workTime":0.2 }
+    { "name":"Johan Richer", "parts":100, "workTime":100 }, 
+    { "name":"Julien Paris", "parts":100, "workTime":100 }, 
+    { "name":"Thomas Brosset", "parts":40, "workTime":40 }, 
+    { "name":"Pierre Camilleri", "parts":100, "workTime":60 }, 
+    { "name":"Quentin Loridant", "parts": 100, "workTime":80 }
   ]'
 ```
 
@@ -87,3 +88,9 @@ Technologies used for **multi-site-simulator** are the followiing :
 - https://itnext.io/vuidget-how-to-create-an-embeddable-vue-js-widget-with-vue-custom-element-674bdcb96b97
 - [GitHub - karol-f/vue-custom-element: Vue Custom Element - Web Components&#39; Custom Elements for Vue.js](https://github.com/karol-f/vue-custom-element)
 - https://innovation.enova.com/building-an-embeddable-micro-frontend-with-vue-js/
+
+---
+
+### Deployment
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/42fb20bd-145d-4c2c-a2f6-a5d299c85071/deploy-status)](https://app.netlify.com/sites/multi-site-simulator-test/deploys)
