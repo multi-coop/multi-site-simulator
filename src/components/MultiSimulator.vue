@@ -64,7 +64,7 @@
       <div class="columns is-8 is-multiline mb-6">
 
         <!-- benefs -->
-        <div class="column is-two-thirds">
+        <div class="column is-half">
           <ValueSliderMulti
             :keyVal="'benefs'"
             :val="benefsEntreprise"
@@ -75,7 +75,7 @@
         </div>
 
         <!-- partValue -->
-        <div class="column is-one-third">
+        <div class="column is-half">
           <ValueSliderMulti
             :keyVal="'partValue'"
             :val="partValue"
