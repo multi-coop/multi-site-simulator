@@ -296,9 +296,9 @@ export default {
     rawTeam.forEach((member) => {
       const rand = Math.floor(Math.random() * (100000)) + 1
       const memberKey = `member-${rand}`
-      const memberObj = { key: memberKey, ...member }
-      this.populateTeamMembers({ action: 'push', member: memberObj })
+      const memberObj = { key: memberKey, ...member, isDefault: true }
       originalTeam.push(memberObj)
+      this.populateTeamMembers({ action: 'push', member: memberObj })
     })
 
     this.saveTeamDefault(originalTeam)

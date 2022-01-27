@@ -232,8 +232,9 @@ export default new Vuex.Store({
     },
     resetTeam ({ state, commit }) {
       // console.log('S > A > resetTeam > state.teamMembersDefault : ', state.teamMembersDefault)
-      commit('setValue', { space: 'teamMembers', value: state.teamMembersDefault })
-      commit('setValue', { space: 'teamNeedsReset', value: state.teamMembersDefault.map(m => m.key) })
+      const teamMembersDefault = state.teamMembersDefault.filter(t => t.isDefault)
+      commit('setValue', { space: 'teamMembers', value: teamMembersDefault })
+      commit('setValue', { space: 'teamNeedsReset', value: teamMembersDefault.map(m => m.key) })
       // console.log('S > A > resetTeam > state.teamNeedsReset : ', state.teamNeedsReset)
     },
     deleteMemberFromNeedsReset ({ state, commit }, keyMember) {
