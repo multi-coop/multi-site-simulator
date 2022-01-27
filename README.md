@@ -40,7 +40,7 @@ The widget takes several parameters, following this structure :
     { "name":"Joe Black", "parts":100, "workTime":100 }, 
     { "name":"Julian Assange", "parts":100, "workTime":100 }, 
     { "name":"Thomas Piketti", "parts":40, "workTime":40 }, 
-    { "name":"Pierre Larouturau", "parts":100, "workTime":60 }, 
+    { "name":"Pierre Larrouturou", "parts":100, "workTime":60 }, 
     { "name":"Quentin Tarantino", "parts": 100, "workTime":80 }
   ]'
 ```
