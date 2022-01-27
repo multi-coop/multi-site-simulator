@@ -27,7 +27,7 @@ The widget takes several parameters, following this structure :
 
 ```
   locale="fr"
-  cooperative="multi"
+  cooperative="MultiPass"
   partvalue="25"
   minbenefs="0"
   benefs="100000"
@@ -37,11 +37,11 @@ The widget takes several parameters, following this structure :
     "dividendes":10
   }'
   team='[
-    { "name":"Johan Richer", "parts":100, "workTime":100 }, 
-    { "name":"Julien Paris", "parts":100, "workTime":100 }, 
-    { "name":"Thomas Brosset", "parts":40, "workTime":40 }, 
-    { "name":"Pierre Camilleri", "parts":100, "workTime":60 }, 
-    { "name":"Quentin Loridant", "parts": 100, "workTime":80 }
+    { "name":"Joe Black", "parts":100, "workTime":100 }, 
+    { "name":"Julian Assange", "parts":100, "workTime":100 }, 
+    { "name":"Thomas Piketti", "parts":40, "workTime":40 }, 
+    { "name":"Pierre Larouturau", "parts":100, "workTime":60 }, 
+    { "name":"Quentin Tarantino", "parts": 100, "workTime":80 }
   ]'
 ```
 
