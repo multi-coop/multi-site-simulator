@@ -47,21 +47,20 @@
       </div>
     </div>
 
-    <!-- DEBUG ICON -->
-    <div class="columns">
-      <div class="column is-2 has-text-centered">
-        <b-icon
-          icon="calculator"
-        />
-      </div>
-      <div class="column is-8 has-text-centered">
+    <!-- TITLE -->
+    <div class="columns is-centered is-multiline">
+      <div class="column is-two-thirds has-text-centered">
         <p class="title mx-5">
+          <b-icon
+            class="mr-3"
+            icon="calculator"
+          />
           <span>
-            {{ t('title') }}
+            {{ t('title') }} {{ cooperative }}
           </span>
         </p>
       </div>
-      <div class="column is-2 has-text-centered">
+      <div class="column is-full has-text-centered">
         <b-button
           icon-left="github"
           tag="a"
@@ -85,7 +84,9 @@
             :keyVal="'benefs'"
             :val="benefsEntreprise"
           />
-          <strong class="has-text-primary">
+          <strong
+            :class="`has-text-${ getVal('benefs') < benefsOptions.minLimit ? 'danger has-text-weight-bold' : 'primary' }`"
+            >
             {{ getVal('benefs').toLocaleString() }} €
           </strong>
         </div>
@@ -96,7 +97,9 @@
             :keyVal="'partValue'"
             :val="partValue"
           />
-          <strong class="has-text-primary">
+          <strong
+            :class="`has-text-${ (getVal('partValue') < partValueOptions.minLimit || getVal('partValue') > partValueOptions.maxLimit) ? 'danger has-text-weight-bold' : 'primary' }`"
+            >
             {{ getVal('partValue').toLocaleString() }} €
           </strong>
         </div>
@@ -104,20 +107,31 @@
       </div>
 
       <div class="columns is-8 is-multiline">
+
         <!-- reserves -->
         <div class="column">
           <ValueSliderMulti
             :keyVal="'reserves'"
             :val="reservesEntreprise"
           />
-          {{ benefsEntreprise.toLocaleString() }} €
-          x
-          {{ getVal('reserves') }} %
-          =
-          <strong class="has-text-primary">
-            {{ (benefsEntreprise * getVal('reserves') / 100).toLocaleString() }} €
-          </strong>
+          <p class="mt-4">
+            {{ benefsEntreprise.toLocaleString() }} €
+            x
+            <span
+              :class="`has-text-${ (getVal('reserves') < reservesOptions.minLimit || getVal('reserves') > reservesOptions.maxLimit) ? 'danger has-text-weight-bold' : 'primary' }`"
+              >
+              {{ getVal('reserves') }} %
+            </span>
+            =
+            <br>
+            <strong
+              :class="`has-text-${ (getVal('reserves') < reservesOptions.minLimit || getVal('reserves') > reservesOptions.maxLimit) ? 'danger has-text-weight-bold' : 'primary' }`"
+              >
+              {{ getShare('reserves').toLocaleString() }} €
+            </strong>
+          </p>
         </div>
+
         <!-- interessement -->
         <div class="column">
           <ValueSliderMulti
@@ -126,12 +140,20 @@
           />
           {{ benefsEntreprise.toLocaleString() }} €
           x
-          {{ getVal('participation') }} %
+          <span
+              :class="`has-text-${ (getVal('participation') < participationOptions.minLimit || getVal('participation') > participationOptions.maxLimit) ? 'danger has-text-weight-bold' : 'primary' }`"
+            >
+            {{ getVal('participation') }} %
+          </span>
           =
-          <strong class="has-text-primary">
-            {{ (benefsEntreprise * getVal('participation') / 100).toLocaleString() }} €
+          <br>
+          <strong
+            :class="`has-text-${ (getVal('participation') < participationOptions.minLimit || getVal('participation') > participationOptions.maxLimit) ? 'danger has-text-weight-bold' : 'primary' }`"
+            >
+            {{ getShare('participation').toLocaleString() }} €
           </strong>
         </div>
+
         <!-- dividendes -->
         <div class="column">
           <ValueSliderMulti
@@ -140,10 +162,17 @@
           />
           {{ benefsEntreprise.toLocaleString() }} €
           x
-          {{ getVal('dividendes') }} %
+          <span
+            :class="`has-text-${ (getVal('dividendes') > dividendesOptions.maxLimit || getVal('dividendes') > getVal('reserves') || getVal('dividendes') > getVal('participation')) ? 'danger has-text-weight-bold' : 'primary' }`"
+            >
+            {{ getVal('dividendes') }} %
+          </span>
           =
-          <strong class="has-text-primary">
-            {{ (benefsEntreprise * getVal('dividendes') / 100).toLocaleString() }} €
+          <br>
+          <strong
+            :class="`has-text-${ (getVal('dividendes') > dividendesOptions.maxLimit || getVal('dividendes') > getVal('reserves') || getVal('dividendes') > getVal('participation')) ? 'danger has-text-weight-bold' : 'primary' }`"
+            >
+            {{ getShare('dividendes').toLocaleString() }} €
           </strong>
         </div>
 
@@ -229,6 +258,7 @@ export default {
   },
   props: {
     locale: String,
+    cooperative: String,
     partvalue: Number,
     minbenefs: Number,
     benefs: Number,
@@ -281,7 +311,12 @@ export default {
     ...mapState({
       benefsEntreprise: (state) => state.benefs,
       partValue: (state) => state.partValue,
-      teamMembers: (state) => state.teamMembers
+      teamMembers: (state) => state.teamMembers,
+      partValueOptions: (state) => state.partValueOptions,
+      benefsOptions: (state) => state.benefsOptions,
+      reservesOptions: (state) => state.reservesOptions,
+      participationOptions: (state) => state.participationOptions,
+      dividendesOptions: (state) => state.dividendesOptions
     }),
     ...mapGetters({
       reservesEntreprise: 'getReserves',
@@ -304,6 +339,12 @@ export default {
     }),
     addMember () {
       this.populateTeamMembers({ action: 'add' })
+    },
+    getShare (key) {
+      return this.benefsEntreprise * this.getVal(key) / 100
+    },
+    isSuperiorTo (input, limit) {
+      return limit > input
     }
   },
   beforeDestroy () {

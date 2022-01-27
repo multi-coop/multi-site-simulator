@@ -27,6 +27,7 @@ The widget takes several parameters, following this structure :
 
 ```
   locale="fr"
+  cooperative="multi"
   partvalue="25"
   minbenefs="0"
   benefs="100000"

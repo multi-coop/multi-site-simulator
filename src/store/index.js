@@ -9,19 +9,19 @@ export default new Vuex.Store({
 
     partValue: 25,
     partMax: 200,
-    partValueOptions: { min: 20, max: 75, ticks: 5, unit: '€' },
+    partValueOptions: { min: 0, max: 100, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€' },
 
     benefs: 0,
-    benefsOptions: { min: 0, max: 300000, ticks: 10000, unit: '€' },
+    benefsOptions: { min: -10000, max: 300000, minLimit: 0, maxLimit: false, ticks: 10000, unit: '€' },
 
     reserves: 40,
     participation: 50,
     dividendes: 10,
-    reservesOptions: { min: 15, max: 75, ticks: 5, unit: '%', substract: 'participation' },
-    participationOptions: { min: 25, max: 84, ticks: 5, unit: '%', substract: 'reserves' },
-    dividendesOptions: { min: 0, max: 33, ticks: 5, unit: '%', substract: 'participation' },
+    reservesOptions: { min: 0, max: 100, minLimit: 16, maxLimit: 75, ticks: 5, unit: '%', substract: 'participation' },
+    participationOptions: { min: 0, max: 100, minLimit: 25, maxLimit: 84, ticks: 5, unit: '%', substract: 'reserves' },
+    dividendesOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', substract: 'participation' },
 
-    workTimeOptions: { min: 0, max: 100, ticks: 5, unit: '%' },
+    workTimeOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 100, ticks: 5, unit: '%' },
 
     repartDefaults: {},
     repartNeedsReset: [],
@@ -37,7 +37,10 @@ export default new Vuex.Store({
 
     dict: {
       title: {
-        fr: 'Simulateur de répartition des excédents de gestion'
+        fr: 'Simulateur de répartition des excédents de gestion de la coopérative'
+      },
+      close: {
+        fr: 'Fermer'
       },
       code: {
         fr: 'Code source'
@@ -49,10 +52,16 @@ export default new Vuex.Store({
         fr: 'Réserves impartageables'
       },
       participation: {
-        fr: 'Participation des salariés'
+        fr: 'Participation aux salarié·e·s'
+      },
+      participationSingular: {
+        fr: 'Participation pour le·la salarié·e'
       },
       dividendes: {
         fr: 'Dividendes'
+      },
+      totalShares: {
+        fr: 'Total de part aux bénéfices'
       },
       name: {
         fr: 'Nom'
@@ -70,16 +79,19 @@ export default new Vuex.Store({
         fr: "Valeur nominale d'une part sociale"
       },
       partsValue: {
-        fr: "Valeur des parts de l'associé"
+        fr: "Valeur des parts de l'associé·e"
       },
       partsShare: {
         fr: 'Pourcentage des parts sociales (part au capital)'
       },
+      editMember: {
+        fr: 'Éditer'
+      },
       addMember: {
-        fr: 'Ajouter un membre'
+        fr: 'Ajouter un·e salarié·e'
       },
       deleteMember: {
-        fr: 'Supprimer ce membre'
+        fr: 'Supprimer cet·te associé·e'
       },
       reset: {
         fr: "Réinitialiser l'équipe"
@@ -118,16 +130,19 @@ export default new Vuex.Store({
         employees: state.teamMembers.filter(p => p.workTime).length,
         associates: state.teamMembers.filter(p => p.parts).length,
         workTimeTotal: state.teamMembers.map(m => m.workTime).reduce((prev, curr) => prev + curr, 0),
-        partsTotal: state.teamMembers.map(m => m.parts).reduce((prev, curr) => prev + curr, 0)
+        partsTotal: state.teamMembers.map(m => m.parts).reduce((prev, curr) => prev + curr, 0),
+        repartTotal: state.reserves + state.participation + state.dividendes
       }
     },
     getShares: (state, getters) => (key) => {
       const totals = getters.totals
       const benefs = getters.repartBenefs
       const valRepart = state[key]
+      const valOptions = state[`${key}Options`]
       // console.log('S > G > getShares > valRepart : ', valRepart)
       return {
         key: key,
+        options: valOptions,
         totals: totals,
         benefs: benefs,
         valRepart: valRepart

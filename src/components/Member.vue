@@ -6,8 +6,11 @@
         <div
           class="level-left"
           >
+
           <div
+            v-show="!edit"
             class="level-item has-text-weight-bold is-uppercase has-text-primary is-size-5"
+            @click="edit = true"
             >
             <b-icon
               icon="account"
@@ -17,15 +20,48 @@
             <!-- <span class="is-size-7 is-lowercase">
               - {{ keyMember }}
             </span> -->
+            <b-button
+              class="ml-3"
+              icon-left="edit"
+              @click="edit = true"
+              type="is-ghost"
+              >
+              {{ t('editMember')}}
+            </b-button>
           </div>
+
+            <!-- :label="t('name')" -->
+          <div
+            v-show="edit"
+            >
+            <b-field
+              grouped
+              custom-class="is-small"
+              >
+              <!-- size="is-small" -->
+              <b-input
+                v-model="name"
+                @input="updateMember()"
+                expanded
+              />
+              <b-button
+                class="ml-3"
+                icon-left="close"
+                @click="edit = false"
+                >
+                {{ t('close')}}
+              </b-button>
+            </b-field>
+          </div>
+
         </div>
       </div>
     </div>
 
-    <div class="card-content">
+    <div class="card-content pt-0">
       <section>
 
-        <b-field
+        <!-- <b-field
           :label="t('name')"
           horizontal
           custom-class="is-small"
@@ -36,22 +72,13 @@
             @input="updateMember()"
             expanded
           />
-        </b-field>
+        </b-field> -->
 
         <b-field
           :label="t('workTime')"
           class="mb-5"
           custom-class="is-small"
-          horizontal
           >
-          <!-- <b-numberinput
-            v-model="workTime"
-            size="is-small"
-            controls-position="compact"
-            :step="20"
-            @input="updateMember()"
-            expanded
-          /> -->
           <b-slider
             v-model="workTime"
             :max="100"
@@ -70,15 +97,7 @@
           :label="t('parts')"
           class="mb-5"
           custom-class="is-small"
-          horizontal
           >
-          <!-- <b-numberinput
-            v-model="parts"
-            size="is-small"
-            controls-position="compact"
-            @input="updateMember()"
-            expanded
-          /> -->
           <b-slider
             v-model="parts"
             :max="partMax"
@@ -95,7 +114,7 @@
 
       </section>
 
-      <div class="columns is-mobile mb-0 has-text-centered">
+      <!-- <div class="columns is-mobile mt-3 mb-0 has-text-centered">
         <div class="column">
           <p class="is-size-7">
             {{ t('partsShare') }}
@@ -116,82 +135,76 @@
               {{ t('dividendes') }}
           </p>
         </div>
-      </div>
+      </div> -->
 
-      <div class="columns is-mobile has-text-centered">
-        <div class="column">
+      <div class="columns is-mobile is-multiline pt-5 mb-1 is-vcentered">
+
+        <div class="column is-three-quarters pt-1 pb-0">
+          <p class="is-size-7">
+            {{ t('partsShare') }}
+          </p>
+        </div>
+        <div class="column is-one-quarter pt-1 pb-0">
           <p
-            :class="`title is-6 has-text-${(parts * 100 / totals.partsTotal) > 50 ? 'danger' : 'primary' }`"
+            :class="`is-6 has-text-right has-text-${ parts * 100 / totals.partsTotal > 50 ? 'danger' : 'grey' }`"
             >
             {{ (parts * 100 / totals.partsTotal).toFixed(1).toLocaleString() }} %
           </p>
         </div>
-        <div class="column">
-          <p class="title is-6 has-text-primary">
-            {{( parts * partValue).toLocaleString() }} €
+
+        <div class="column is-three-quarters pt-1 pb-0">
+          <p class="is-size-7">
+            {{ t('partValue') }}
           </p>
         </div>
-        <div class="column">
-          <p class="title is-6 has-text-primary">
-            <!-- <code class="has-text-left"><pre>
-              {{ getShareByKey('participation') }}
-            </pre></code>
-            <br>
-            <code class="has-text-left"><pre>
-              {{ workTime }}
-            </pre></code> -->
+        <div class="column is-one-quarter pt-1 pb-0">
+          <p
+            :class="`is-6 has-text-right has-text-${ (partValue < partValueOptions.minLimit || partValue > partValueOptions.maxLimit) ? 'danger' : 'grey'}`"
+            >
+            {{ (parts * partValue).toLocaleString() }} €
+          </p>
+        </div>
+
+        <div class="column is-three-quarters pt-4 pb-0">
+          <p class="is-size-7 has-text-weight-bold">
+            {{ t('participationSingular') }}
+          </p>
+        </div>
+        <div class="column is-one-quarter pt-4 pb-0">
+          <p
+            :class="`title is-6 has-text-right has-text-${ (getShareByKey('participation').sum > 30000 || participation < participationOptions.minLimit || participation > participationOptions.maxLimit) ? 'danger' : 'primary'}`"
+            >
             {{ getShareByKey('participation').sum.toLocaleString() }} €
           </p>
         </div>
-        <div class="column">
-          <p class="title is-6 has-text-primary">
+
+        <div class="column is-three-quarters pt-1 pb-0">
+          <p class="is-size-7 has-text-weight-bold">
+            {{ t('dividendes') }}
+          </p>
+        </div>
+        <div class="column is-one-quarter pt-1 pb-0">
+          <p
+            :class="`title is-6 has-text-right has-text-${ (dividendes < dividendesOptions.minLimit || dividendes > dividendesOptions.maxLimit) ? 'danger' : 'primary'}`"
+            >
             {{ getShareByKey('dividendes').sum.toLocaleString() }} €
+          </p>
+        </div>
+
+        <div class="column is-three-quarters pt-1 pb-0">
+          <p class="is-size-7">
+            {{ t('totalShares') }}
+          </p>
+        </div>
+        <div class="column is-one-quarter pt-1 pb-0">
+          <p
+            :class="`is-6 has-text-right has-text-weight-medium has-text-${ (dividendes < dividendesOptions.minLimit || dividendes > dividendesOptions.maxLimit) ? 'danger' : 'grey'}`"
+            >
+            {{ (getShareByKey('participation').sum + getShareByKey('dividendes').sum).toLocaleString() }} €
           </p>
         </div>
       </div>
 
-      <!-- <nav class="level">
-        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
-          <div>
-            <p class="label is-size-7">
-              {{ t('partsShare') }}
-            </p>
-            <p class="title is-6 has-text-primary">
-              {{ (parts * 100 / totals.partsTotal).toFixed(1).toLocaleString() }} %
-            </p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
-          <div>
-            <p class="label is-size-7">
-              {{ t('partsValue') }}
-            </p>
-            <p class="title is-6 has-text-primary">
-              {{( parts * partValue).toLocaleString() }} €
-            </p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
-          <div>
-            <p class="label is-size-7">
-              {{ t('participation') }}
-            </p>
-            <p class="title is-6 has-text-primary">
-              {{ getShareByKey('participation').sum.toLocaleString() }} €
-            </p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered is-flex-grow-0 is-flex-shrink-1">
-          <div>
-            <p class="label is-size-7">
-              {{ t('dividendes') }}
-            </p>
-            <p class="title is-6 has-text-primary">
-              {{ getShareByKey('dividendes').sum.toLocaleString() }} €
-            </p>
-          </div>
-        </div>
-      </nav> -->
     </div>
 
     <footer class="card-footer">
@@ -236,7 +249,8 @@ export default {
       dataMember: {},
       name: undefined,
       parts: undefined,
-      workTime: undefined
+      workTime: undefined,
+      edit: false
     }
   },
   beforeMount () {
@@ -261,10 +275,20 @@ export default {
   },
   computed: {
     ...mapState({
-      partValue: (state) => state.partValue,
       benefsEntreprise: (state) => state.benefs,
       partMax: (state) => state.partMax,
-      teamNeedsReset: (state) => state.teamNeedsReset
+      teamNeedsReset: (state) => state.teamNeedsReset,
+
+      partValue: (state) => state.partValue,
+      reserves: (state) => state.reserves,
+      participation: (state) => state.participation,
+      dividendes: (state) => state.dividendes,
+
+      partValueOptions: (state) => state.partValueOptions,
+      benefsOptions: (state) => state.benefsOptions,
+      reservesOptions: (state) => state.reservesOptions,
+      participationOptions: (state) => state.participationOptions,
+      dividendesOptions: (state) => state.dividendesOptions
     }),
     ...mapGetters({
       totals: 'totals',
