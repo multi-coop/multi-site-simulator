@@ -274,6 +274,9 @@ export default {
     this.saveTeamDefault(originalTeam)
     this.saveRepartDefaults(defaults)
   },
+  mounted () {
+    this.resetTeam()
+  },
   computed: {
     ...mapState({
       benefsEntreprise: (state) => state.benefs,
