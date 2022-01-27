@@ -60,13 +60,24 @@
           </span>
         </p>
       </div>
-      <div class="column is-full has-text-centered">
+
+      <div class="column is-full is-italic has-text-centered">
+        <span class="has-text-grey is-size-6">
+          {{ t('reclaim') }}
+        </span>
+        <a
+          href="https://multi.coop"
+          target="_blank"
+          >
+          multi
+        </a>
         <b-button
           icon-left="github"
           tag="a"
           href="https://github.com/multi-coop/multi-site-simulator"
           outlined
           size="is-small"
+          class="ml-3"
           >
           {{ t('code') }}
         </b-button>

@@ -39,6 +39,9 @@ export default new Vuex.Store({
       title: {
         fr: 'Simulateur de répartition des excédents de gestion de la coopérative'
       },
+      reclaim: {
+        fr: 'Un widget open source codé par'
+      },
       close: {
         fr: 'Fermer'
       },
