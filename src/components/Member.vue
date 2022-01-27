@@ -9,12 +9,14 @@
           <div
             class="level-item has-text-weight-bold is-uppercase has-text-primary is-size-5"
             >
-            <!-- keyMember : {{ keyMember }} -->
             <b-icon
               icon="account"
               class="mr-3"
             />
             {{ name }}
+            <!-- <span class="is-size-7 is-lowercase">
+              - {{ keyMember }}
+            </span> -->
           </div>
         </div>
       </div>
@@ -190,7 +192,6 @@
           </div>
         </div>
       </nav> -->
-
     </div>
 
     <footer class="card-footer">
@@ -244,15 +245,31 @@ export default {
     this.parts = this.memberData.parts
     this.workTime = this.memberData.workTime
   },
+  watch: {
+    teamNeedsReset (next) {
+      // console.log('\nC - Member > watch > teamNeedsReset > next :', next)
+      // console.log('C - Member > watch > teamNeedsReset > this.keyMember :', this.keyMember)
+      if (next.includes(this.keyMember)) {
+        // const memberDefault = this.getMemberDefault(this.keyMember)
+        // console.log('C - Member > watch > teamNeedsReset > memberDefault :', memberDefault)
+        this.name = this.dataMember.name
+        this.parts = this.dataMember.parts
+        this.workTime = this.dataMember.workTime
+        this.deleteMemberFromNeedsReset(this.keyMember)
+      }
+    }
+  },
   computed: {
     ...mapState({
       partValue: (state) => state.partValue,
       benefsEntreprise: (state) => state.benefs,
-      partMax: (state) => state.partMax
+      partMax: (state) => state.partMax,
+      teamNeedsReset: (state) => state.teamNeedsReset
     }),
     ...mapGetters({
       totals: 'totals',
       getShares: 'getShares',
+      // getMemberDefault: 'getMemberDefault',
       t: 'getTranslation'
     }),
     memberObject () {
@@ -266,7 +283,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      populateTeamMembers: 'populateTeamMembers'
+      populateTeamMembers: 'populateTeamMembers',
+      deleteMemberFromNeedsReset: 'deleteMemberFromNeedsReset'
     }),
     getShareByKey (key) {
       const vars = this.getShares(key)

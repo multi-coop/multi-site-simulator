@@ -3,6 +3,8 @@
     <div
       class="block"
       >
+      <!-- {{ keyVal }} -
+      {{ repartDefaults }} -->
       <!-- <b-field
         :label="t(keyVal)"
         class="mb-5"
@@ -72,10 +74,15 @@ export default {
     }
   },
   watch: {
-    valFromStore (next, prev) {
+    valFromStore (next) {
       // console.log('C - ValueSliderMulti > watch > valFromStore > prev :', prev)
       // console.log('C - ValueSliderMulti > watch > valFromStore > next :', next)
       this.numberInput = next
+    },
+    repartNeedsReset (next) {
+      // console.log('C - ValueSliderMulti > watch > repartNeedsReset > next :', next)
+      // console.log('C - ValueSliderMulti > watch > repartNeedsReset > this.keyVal :', this.keyVal)
+      this.numberInput = this.repartDefaults[this.keyVal]
     }
   },
   beforeMount () {
@@ -87,6 +94,8 @@ export default {
     ...mapState({
       // benefsEntreprise: (state) => state.benefs
       // valStore: (state) => state[this.keyVal]
+      repartNeedsReset: 'repartNeedsReset',
+      repartDefaults: 'repartDefaults'
     }),
     ...mapGetters({
       // repartBenefs: 'repartBenefs',

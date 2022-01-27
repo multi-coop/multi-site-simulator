@@ -154,6 +154,17 @@
       <div class="column is-one-third">
         <b-button
           icon-left="autorenew"
+          @click="resetRepart()"
+          type="is-grey"
+          outlined
+          expanded
+          >
+          {{ t('resetRepart') }}
+        </b-button>
+      </div>
+      <div class="column is-one-third">
+        <b-button
+          icon-left="autorenew"
           @click="resetTeam()"
           type="is-grey"
           outlined
@@ -232,33 +243,36 @@ export default {
     }
   },
   beforeMount () {
-    // console.log('C - MultiSimulator > beforeMount > this.benefs :', this.benefs)
-    // console.log('C - MultiSimulator > beforeMount > this.repart :', this.repart)
-    // console.log('C - MultiSimulator > beforeMount > this.partvalue :', this.partvalue)
-    // console.log('C - MultiSimulator > beforeMount > this.minbenefs :', this.minbenefs)
-    // console.log('C - MultiSimulator > beforeMount > this.benefs :', this.benefs)
-    // console.log('C - MultiSimulator > beforeMount > this.team :', this.team)
-    // this.benefsEntreprise = this.benefs
-    // this.repartEntreprise = JSON.parse(this.repart)
-    // this.teamEntreprise = JSON.parse(this.team)
     this.populateValue({ space: 'locale', value: this.locale })
-    this.populateValue({ space: 'partValue', value: this.partvalue })
     this.populateValue({ space: 'minBenefs', value: this.minbenefs })
-    this.populateValue({ space: 'benefs', value: this.benefs })
+
     const repart = JSON.parse(this.repart)
-    // console.log('C - MultiSimulator > beforeMount > repart :', repart)
-    this.populateValue({ space: 'reserves', value: repart.reserves * 100 })
-    this.populateValue({ space: 'participation', value: repart.participation * 100 })
-    this.populateValue({ space: 'dividendes', value: repart.dividendes * 100 })
+    const defaults = {
+      partValue: this.partvalue,
+      benefs: this.benefs,
+      reserves: repart.reserves * 100,
+      participation: repart.participation * 100,
+      dividendes: repart.dividendes * 100
+    }
+    this.populateValue({ space: 'partValue', value: defaults.partValue })
+    this.populateValue({ space: 'benefs', value: defaults.benefs })
+    this.populateValue({ space: 'reserves', value: defaults.reserves })
+    this.populateValue({ space: 'participation', value: defaults.participation })
+    this.populateValue({ space: 'dividendes', value: defaults.dividendes })
 
     const rawTeam = JSON.parse(this.team)
     // this.populateValue({ space: 'team', value: rawTeam })
+    const originalTeam = []
     rawTeam.forEach((member) => {
       const rand = Math.floor(Math.random() * (100000)) + 1
       const memberKey = `member-${rand}`
-      this.populateTeamMembers({ action: 'push', member: { key: memberKey, ...member } })
+      const memberObj = { key: memberKey, ...member }
+      this.populateTeamMembers({ action: 'push', member: memberObj })
+      originalTeam.push(memberObj)
     })
-    this.saveTeamDefault()
+
+    this.saveTeamDefault(originalTeam)
+    this.saveRepartDefaults(defaults)
   },
   computed: {
     ...mapState({
@@ -281,7 +295,9 @@ export default {
       populateValue: 'populateValue',
       populateTeamMembers: 'populateTeamMembers',
       saveTeamDefault: 'saveTeamDefault',
-      resetTeam: 'resetTeam'
+      resetTeam: 'resetTeam',
+      saveRepartDefaults: 'saveRepartDefaults',
+      resetRepart: 'resetRepart'
     }),
     addMember () {
       this.populateTeamMembers({ action: 'add' })

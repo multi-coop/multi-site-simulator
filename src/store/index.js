@@ -23,6 +23,10 @@ export default new Vuex.Store({
 
     workTimeOptions: { min: 0, max: 100, ticks: 5, unit: '%' },
 
+    repartDefaults: {},
+    repartNeedsReset: [],
+
+    teamNeedsReset: [],
     teamMembers: [],
     teamMembersDefault: [],
     emptyMember: {
@@ -79,6 +83,9 @@ export default new Vuex.Store({
       },
       reset: {
         fr: "Réinitialiser l'équipe"
+      },
+      resetRepart: {
+        fr: 'Réinitialiser les variables'
       }
     }
   },
@@ -129,6 +136,9 @@ export default new Vuex.Store({
     getTranslation: (state) => (key) => {
       return state.dict[key][state.locale] || key
     }
+    // getMemberDefault: (state) => (keyMember) => {
+    //   return state.teamMembersDefault.find(m => m.key === keyMember)
+    // }
   },
   mutations: {
     setValue (state, { space, value }) {
@@ -144,6 +154,10 @@ export default new Vuex.Store({
     deleteMember (state, member) {
       const index = state.teamMembers.findIndex(m => m.key === member.key)
       state.teamMembers.splice(index, 1)
+    },
+    deleteMemberFromNeedsReset (state, keyMember) {
+      const index = state.teamNeedsReset.findIndex(key => key === keyMember)
+      state.teamNeedsReset.splice(index, 1)
     }
   },
   actions: {
@@ -198,12 +212,36 @@ export default new Vuex.Store({
           break
       }
     },
-    saveTeamDefault ({ state, commit }) {
-      commit('setValue', { space: 'teamMembersDefault', value: [...state.teamMembers] })
+    saveTeamDefault ({ commit }, originalTeam) {
+      commit('setValue', { space: 'teamMembersDefault', value: originalTeam })
     },
     resetTeam ({ state, commit }) {
       // console.log('S > A > resetTeam > state.teamMembersDefault : ', state.teamMembersDefault)
       commit('setValue', { space: 'teamMembers', value: state.teamMembersDefault })
+      commit('setValue', { space: 'teamNeedsReset', value: state.teamMembersDefault.map(m => m.key) })
+      // console.log('S > A > resetTeam > state.teamNeedsReset : ', state.teamNeedsReset)
+    },
+    deleteMemberFromNeedsReset ({ state, commit }, keyMember) {
+      // console.log('S > A > deleteMemberFromNeedsReset > keyMember : ', keyMember)
+      commit('deleteMemberFromNeedsReset', keyMember)
+      // console.log('S > A > deleteMemberFromNeedsReset > state.teamNeedsReset : ', state.teamNeedsReset)
+    },
+
+    saveRepartDefaults ({ commit }, defaults) {
+      commit('setValue', { space: 'repartDefaults', value: defaults })
+    },
+    resetRepart ({ state, commit }) {
+      const toReset = [
+        'partValue',
+        'benefs',
+        'reserves',
+        'participation',
+        'dividendes'
+      ]
+      commit('setValue', { space: 'repartNeedsReset', value: toReset })
+    },
+    deleteRepartFromNeedsReset ({ state, commit }, keyRepart) {
+      commit('deleteRepartFromNeedsReset', keyRepart)
     }
   },
 
