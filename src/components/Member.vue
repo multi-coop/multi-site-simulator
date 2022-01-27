@@ -131,6 +131,13 @@
         </div>
         <div class="column">
           <p class="title is-6 has-text-primary">
+            <!-- <code class="has-text-left"><pre>
+              {{ getShareByKey('participation') }}
+            </pre></code>
+            <br>
+            <code class="has-text-left"><pre>
+              {{ workTime }}
+            </pre></code> -->
             {{ getShareByKey('participation').sum.toLocaleString() }} €
           </p>
         </div>
@@ -262,18 +269,22 @@ export default {
       populateTeamMembers: 'populateTeamMembers'
     }),
     getShareByKey (key) {
-      const vars = this.getShares('participation')
+      const vars = this.getShares(key)
       const benefsToshare = vars.benefs[key]
+      // console.log('\nC - Member > getShareByKey > key :', key)
+      // console.log('C - Member > getShareByKey > this.dataMember :', this.dataMember)
       // console.log('C - Member > getShareByKey > benefsToshare :', benefsToshare)
+      // console.log('C - Member > getShareByKey > vars :', vars)
       let div = 0
       switch (key) {
         case 'participation':
-          div = this.dataMember.workTime / vars.totals.workTimeTotal
+          div = this.workTime / vars.totals.workTimeTotal
           break
         case 'dividendes':
-          div = this.dataMember.parts / vars.totals.partsTotal
+          div = this.parts / vars.totals.partsTotal
           break
       }
+      // console.log('C - Member > getShareByKey > div :', div)
       const sum = benefsToshare * div
       return {
         vars: vars,

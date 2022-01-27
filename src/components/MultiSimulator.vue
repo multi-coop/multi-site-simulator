@@ -10,12 +10,6 @@
         >
         <div class="column">
           <p>
-            msg :<br>
-            <code>{{ msg }}</code>
-          </p>
-        </div>
-        <div class="column">
-          <p>
             benefsEntreprise :
             <code>{{ benefsEntreprise }}</code>
           </p>

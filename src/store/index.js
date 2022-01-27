@@ -123,7 +123,7 @@ export default new Vuex.Store({
         key: key,
         totals: totals,
         benefs: benefs,
-        valRepart: valRepart / 100
+        valRepart: valRepart
       }
     },
     getTranslation: (state) => (key) => {
