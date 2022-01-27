@@ -31,8 +31,8 @@ export default new Vuex.Store({
     teamMembersDefault: [],
     emptyMember: {
       name: 'new member',
-      parts: 100,
-      workTime: 100
+      parts: 20,
+      workTime: 80
     },
 
     dict: {
