@@ -250,9 +250,9 @@ export default {
     const defaults = {
       partValue: this.partvalue,
       benefs: this.benefs,
-      reserves: repart.reserves * 100,
-      participation: repart.participation * 100,
-      dividendes: repart.dividendes * 100
+      reserves: repart.reserves,
+      participation: repart.participation,
+      dividendes: repart.dividendes
     }
     this.populateValue({ space: 'partValue', value: defaults.partValue })
     this.populateValue({ space: 'benefs', value: defaults.benefs })
