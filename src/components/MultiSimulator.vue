@@ -84,6 +84,9 @@
       </div>
     </div>
 
+    <!-- INFOS DRAWER -->
+    <InfosDrawer/>
+
     <!-- VALUES -->
     <div class="section">
 
@@ -245,6 +248,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 
 import Member from '@/components/Member'
 import ValueSliderMulti from '@/components/ValueSliderMulti'
+import InfosDrawer from '@/components/InfosDrawer'
 
 import 'buefy/dist/buefy.css'
 
@@ -265,6 +269,7 @@ export default {
   components: {
     // Button,
     Member,
+    InfosDrawer,
     ValueSliderMulti
   },
   props: {
