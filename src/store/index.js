@@ -58,7 +58,7 @@ export default new Vuex.Store({
         fr: 'Participation aux salarié·e·s'
       },
       participationSingular: {
-        fr: 'Participation pour le·la salarié·e'
+        fr: 'Prime de participation'
       },
       dividendes: {
         fr: 'Dividendes'
@@ -69,8 +69,14 @@ export default new Vuex.Store({
       name: {
         fr: 'Nom'
       },
+      months: {
+        fr: 'mois'
+      },
+      yearTime: {
+        fr: "Mois travaillés dans l'année"
+      },
       workTime: {
-        fr: 'Temps de travail'
+        fr: 'Temps de travail (ETP)'
       },
       parts: {
         fr: 'Parts sociales'
@@ -132,7 +138,7 @@ export default new Vuex.Store({
         people: state.teamMembers.length,
         employees: state.teamMembers.filter(p => p.workTime).length,
         associates: state.teamMembers.filter(p => p.parts).length,
-        workTimeTotal: state.teamMembers.map(m => m.workTime).reduce((prev, curr) => prev + curr, 0),
+        workTimeTotal: state.teamMembers.map(m => m.workTime * (m.yearTime / 12)).reduce((prev, curr) => prev + curr, 0),
         partsTotal: state.teamMembers.map(m => m.parts).reduce((prev, curr) => prev + curr, 0),
         repartTotal: state.reserves + state.participation + state.dividendes
       }

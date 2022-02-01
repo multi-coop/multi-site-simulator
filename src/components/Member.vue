@@ -94,6 +94,25 @@
         </b-field>
 
         <b-field
+          :label="t('yearTime')"
+          class="mb-5"
+          custom-class="is-small"
+          >
+          <b-slider
+            v-model="yearTime"
+            :max="12"
+            :min="0"
+            :step="1"
+            :tooltip="false"
+            ticks
+            size="is-small"
+            indicator
+            :custom-formatter="(valTxt) => `${valTxt} ${t('months')}`"
+            @input="updateMember()"
+          />
+        </b-field>
+
+        <b-field
           :label="t('parts')"
           class="mb-5"
           custom-class="is-small"
@@ -250,6 +269,7 @@ export default {
       name: undefined,
       parts: undefined,
       workTime: undefined,
+      yearTime: undefined,
       edit: false
     }
   },
@@ -258,6 +278,7 @@ export default {
     this.name = this.memberData.name
     this.parts = this.memberData.parts
     this.workTime = this.memberData.workTime
+    this.yearTime = this.memberData.yearTime
   },
   watch: {
     teamNeedsReset (next) {
@@ -301,7 +322,8 @@ export default {
         key: this.keyMember,
         name: this.name,
         parts: this.parts,
-        workTime: this.workTime
+        workTime: this.workTime,
+        yearTime: this.yearTime
       }
     }
   },
@@ -320,7 +342,7 @@ export default {
       let div = 0
       switch (key) {
         case 'participation':
-          div = this.workTime / vars.totals.workTimeTotal
+          div = this.workTime * (this.yearTime / 12) / vars.totals.workTimeTotal
           break
         case 'dividendes':
           div = this.parts / vars.totals.partsTotal
