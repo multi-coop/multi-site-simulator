@@ -82,13 +82,10 @@
             <li>
               La valeur nominale d´une part sociale doit être comprise entre 16 € et 75 € ;
             </li>
+            <li>
+              La SAS SCOP peut avoir un capital variable ;
+            </li>
           </ul>
-          <p>
-            La SAS SCOP peut avoir un capital variable ;
-          </p>
-          <p>
-            Les mécanismes de participation et de dividendes ne se déclenchent que si les bénéfices en fin d´exercice sont positifs.
-          </p>
         </div>
       </div>
 
