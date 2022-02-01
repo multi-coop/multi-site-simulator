@@ -25,24 +25,26 @@ The widget's tag is : `<multi-shares-simulator/>`
 
 The widget takes several parameters, following this structure :
 
-```
-  locale="fr"
-  cooperative="MultiPass"
-  partvalue="25"
-  minbenefs="0"
-  benefs="100000"
-  repart='{
-    "reserves":40,
-    "participation":50,
-    "dividendes":10
-  }'
-  team='[
-    { "name":"Joe Black", "parts":100, "workTime":100 }, 
-    { "name":"Julian Assange", "parts":100, "workTime":100 }, 
-    { "name":"Thomas Piketti", "parts":40, "workTime":40 }, 
-    { "name":"Pierre Larrouturou", "parts":100, "workTime":60 }, 
-    { "name":"Quentin Tarantino", "parts": 100, "workTime":80 }
-  ]'
+```html
+  <multi-shares-simulator 
+    locale="fr"
+    cooperative="MultiPass"
+    partvalue="25"
+    minbenefs="0"
+    benefs="100000"
+    repart='{
+      "reserves":40,
+      "participation":50,
+      "dividendes":10
+    }'
+    team='[
+      { "name":"Joe Black", "parts":100, "workTime":100, "yearTime": 12 }, 
+      { "name":"Julian Assange", "parts":100, "workTime":100, "yearTime": 12 }, 
+      { "name":"Thomas Piketti", "parts":40, "workTime":40, "yearTime": 8 }, 
+      { "name":"Pierre Larrouturou", "parts":100, "workTime":60, "yearTime": 10 }, 
+      { "name":"Quentin Tarantino", "parts": 100, "workTime":80, "yearTime": 12 }
+    ]'
+  />
 ```
 
 ---
