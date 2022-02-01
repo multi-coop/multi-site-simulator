@@ -64,7 +64,7 @@
             </li>
           </ul>
           <p>
-            <strong>Le statut d'associé·e est lié au statut de salarié·e </strong>strong>: si un·e associé·e-salarié·e démissionne il·elle perd son statut d'associé·e, et la coopérative doit lui rembourser ses parts sociales (sans plus-value par rapport à leur valeur initiale);
+            <strong>Le statut d'associé·e est lié au statut de salarié·e </strong>: si un·e associé·e-salarié·e démissionne il·elle perd son statut d'associé·e, et la coopérative doit lui rembourser ses parts sociales (sans plus-value par rapport à leur valeur initiale);
           </p>
           <p>
             Le sociétariat doit respecter les règles suivantes :
