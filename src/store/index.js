@@ -101,7 +101,7 @@ export default new Vuex.Store({
         fr: 'Ajouter un·e salarié·e'
       },
       deleteMember: {
-        fr: 'Supprimer cet·te associé·e'
+        fr: 'Retirer cet·te associé·e'
       },
       reset: {
         fr: "Réinitialiser l'équipe"
