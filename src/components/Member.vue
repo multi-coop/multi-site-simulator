@@ -158,12 +158,12 @@
 
       <div class="columns is-mobile is-multiline pt-5 mb-1 is-vcentered">
 
-        <div class="column is-three-quarters pt-1 pb-0">
+        <div class="column is-half-mobile is-three-quarters pt-1 pb-0">
           <p class="is-size-7">
             {{ t('partsShare') }}
           </p>
         </div>
-        <div class="column is-one-quarter pt-1 pb-0">
+        <div class="column is-half-mobile is-one-quarter pt-1 pb-0">
           <p
             :class="`is-6 has-text-right has-text-${ parts * 100 / totals.partsTotal > 50 ? 'danger' : 'grey' }`"
             >
@@ -171,12 +171,12 @@
           </p>
         </div>
 
-        <div class="column is-three-quarters pt-1 pb-0">
+        <div class="column is-half-mobile is-three-quarters pt-1 pb-0">
           <p class="is-size-7">
-            {{ t('partValue') }}
+            {{ t('partsValue') }}
           </p>
         </div>
-        <div class="column is-one-quarter pt-1 pb-0">
+        <div class="column is-half-mobile is-one-quarter pt-1 pb-0">
           <p
             :class="`is-6 has-text-right has-text-${ (partValue < partValueOptions.minLimit || partValue > partValueOptions.maxLimit) ? 'danger' : 'grey'}`"
             >
@@ -184,12 +184,12 @@
           </p>
         </div>
 
-        <div class="column is-three-quarters pt-4 pb-0">
+        <div class="column is-half-mobile is-three-quarters pt-4 pb-0">
           <p class="is-size-7 has-text-weight-bold">
             {{ t('participationSingular') }}
           </p>
         </div>
-        <div class="column is-one-quarter pt-4 pb-0">
+        <div class="column is-half-mobile is-one-quarter pt-4 pb-0">
           <p
             :class="`title is-6 has-text-right has-text-${ (getShareByKey('participation').sum > 30000 || participation < participationOptions.minLimit || participation > participationOptions.maxLimit) ? 'danger' : 'primary'}`"
             >
@@ -197,12 +197,12 @@
           </p>
         </div>
 
-        <div class="column is-three-quarters pt-1 pb-0">
+        <div class="column is-half-mobile is-three-quarters pt-1 pb-0">
           <p class="is-size-7 has-text-weight-bold">
             {{ t('dividendes') }}
           </p>
         </div>
-        <div class="column is-one-quarter pt-1 pb-0">
+        <div class="column is-half-mobile is-one-quarter pt-1 pb-0">
           <p
             :class="`title is-6 has-text-right has-text-${ (dividendes < dividendesOptions.minLimit || dividendes > dividendesOptions.maxLimit) ? 'danger' : 'primary'}`"
             >
@@ -210,12 +210,12 @@
           </p>
         </div>
 
-        <div class="column is-three-quarters pt-1 pb-0">
+        <div class="column is-half-mobile is-three-quarters pt-1 pb-0">
           <p class="is-size-7">
             {{ t('totalShares') }}
           </p>
         </div>
-        <div class="column is-one-quarter pt-1 pb-0">
+        <div class="column is-half-mobile is-one-quarter pt-1 pb-0">
           <p
             :class="`is-6 has-text-right has-text-weight-medium has-text-${ (dividendes < dividendesOptions.minLimit || dividendes > dividendesOptions.maxLimit) ? 'danger' : 'grey'}`"
             >
