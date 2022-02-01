@@ -9,17 +9,17 @@ export default new Vuex.Store({
 
     partValue: 25,
     partMax: 200,
-    partValueOptions: { min: 0, max: 100, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€' },
+    partValueOptions: { min: 10, max: 80, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€' },
 
     benefs: 0,
-    benefsOptions: { min: -10000, max: 300000, minLimit: 0, maxLimit: false, ticks: 10000, unit: '€' },
+    benefsOptions: { min: 0, max: 500000, minLimit: 0, maxLimit: false, ticks: 10000, unit: '€' },
 
     reserves: 40,
     participation: 50,
     dividendes: 10,
-    reservesOptions: { min: 0, max: 100, minLimit: 16, maxLimit: 75, ticks: 5, unit: '%', substract: 'participation' },
-    participationOptions: { min: 0, max: 100, minLimit: 25, maxLimit: 84, ticks: 5, unit: '%', substract: 'reserves' },
-    dividendesOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', substract: 'participation' },
+    reservesOptions: { min: 10, max: 80, minLimit: 16, maxLimit: 75, ticks: 5, unit: '%', substract: 'participation' },
+    participationOptions: { min: 20, max: 90, minLimit: 25, maxLimit: 84, ticks: 5, unit: '%', substract: 'reserves' },
+    dividendesOptions: { min: 0, max: 40, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', substract: 'reserves' },
 
     workTimeOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 100, ticks: 5, unit: '%' },
 
@@ -32,7 +32,8 @@ export default new Vuex.Store({
     emptyMember: {
       name: 'new member',
       parts: 20,
-      workTime: 80
+      workTime: 80,
+      yearTime: 6
     },
 
     dict: {

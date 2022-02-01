@@ -107,7 +107,7 @@
             ticks
             size="is-small"
             indicator
-            :custom-formatter="(valTxt) => `${valTxt} ${t('months')}`"
+            :custom-formatter="(valTxt) => `${valTxt}.${t('months')}`"
             @input="updateMember()"
           />
         </b-field>
