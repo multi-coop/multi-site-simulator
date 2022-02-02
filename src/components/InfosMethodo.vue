@@ -72,7 +72,14 @@
               </li>
             </ul>
           </p>
-
+          <p>
+            Ce <i>widget</i> est en <i>open source</i>. Il est librement réutilisable et intégrable dans n'importe quel site internet.
+            <br>
+            Pour plus d'infos vous pouvez vous reporter à
+            <strong><a href="https://github.com/multi-coop/multi-site-simulator" target="_blank">
+              la documentation
+             </a></strong>.
+          </p>
           <hr>
 
           <h5>

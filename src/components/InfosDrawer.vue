@@ -13,7 +13,7 @@
           class="card-header"
           role="button"
           aria-controls="contentIdForA11y3">
-          <p class="card-header-title">
+          <p class="card-header-title has-text-danger">
             Encadrement légal du sociétariat dans une SCOP
           </p>
           <a class="card-header-icon">
@@ -30,34 +30,17 @@
             Juridiquement, une Scop (Société coopérative et participative) est une société coopérative de forme SA, SARL ou SAS, dont les salarié•e•s sont les associé•e•s majoritaires et le pouvoir y est exercé démocratiquement.
           </p>
           <p>
-            <strong>Les bénéfices de la Scop sont obligatoirement répartis en trois parts :</strong>
+            <strong>Les bénéfices de la Scop sont dès le 1er euro obligatoirement répartis en trois parts :</strong>
           </p>
           <ul>
             <li>
-              la part <strong>travail</strong> : participation des salariés aux bénéfices de l´entreprise ;
+              la part <strong>entreprise</strong> : ce sont les réserves impartageables de l'entreprise, <strong>au minimum 16% des bénéfices</strong> ;
             </li>
             <li>
-              la part <strong>entreprise</strong> : ce sont les réserves impartageables de l'entreprise ;
+              la part <strong>travail</strong> : participation des salariés aux bénéfices de l´entreprise, <strong>au minimum 25% des bénéfices</strong> ;
             </li>
             <li>
-              la part <strong>capital</strong>, ou ce qui est redistribué en dividendes aux associé·e·s.
-            </li>
-          </ul>
-          <p>
-            Les textes législatifs sur les Scop imposent une répartition des bénéfices respectant des <i>minima</i> et <i>maxima</i>, ainsi que des conditions particulières liées au sociétariat :
-          </p>
-          <p>
-            <strong>Répartition des bénéfices en fin d´exercice</strong> (dès le 1er euro d'excédent):
-          </p>
-          <ul>
-            <li>
-              <strong>réserves pour la coopérative</strong> : minimum 16% des bénéfices ;
-            </li>
-            <li>
-              <strong>participation des salarié•e•s</strong> : minimum 25% des bénéfices ;
-            </li>
-            <li>
-              <strong>dividendes aux associé•e•s</strong> : doit être inférieur à la fois à la part dévolue aux réserves et à la part dévolue à la participation, au maximum 33% ;
+              la part <strong>capital</strong>, ou ce qui est redistribué en dividendes aux associé·e·s. Cette part doit être inférieure à la fois à la part dévolue aux réserves et à la part dévolue à la participation, <strong>au maximum 33% des bénéfices</strong> ;
             </li>
             <li>
               Attention toutefois, <strong>le montant de la prime de participation est plafonné</strong> et ne doit donc pas dépasser un certain plafond. En 2021, le montant maximum de la prime de participation est de 30 852€
