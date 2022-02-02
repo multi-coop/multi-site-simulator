@@ -26,11 +26,13 @@
 
       <div class="card-content">
         <div class="content">
-          <h4>
+          <h5>
             Introduction
-          </h4>
+          </h5>
           <p>
-            Ce simulateur de répartition des excédents de gestion d'une Scop est un outil qui vise à jouer avec les différentes variables permmettant de calculer les parts de chaque personne impliquée dans la coopérative.
+            Ce simulateur de répartition des excédents de gestion d'une Scop est un outil de type <i>widget</i> qui vise à jouer avec les différentes variables permmettant de calculer les parts de chaque personne impliquée dans la coopérative.
+          </p>
+          <p>
             Nous avons tenté d'intégrer à ce simulateur toutes les obligations légales propres aux Scop, et d'en rendre l'usage le plus simple possible.
           </p>
           <p>
@@ -45,6 +47,9 @@
             </li>
             <li>
               la part <strong>capital</strong>, ou ce qui est redistribué en dividendes aux associé·e·s (maximum 33%, et doit être inférieure aux parts réserves et travail).
+            </li>
+            <li>
+              En complément <strong>un associé ne peut détenir plus de 50% des parts sociales</strong>;
             </li>
           </ul>
           <p>
@@ -63,16 +68,16 @@
                 <strong>le temps de travail sur l'exercice de chaque salarié</strong> ;
               </li>
               <li>
-                <strong>nombre de parts de chaque associé-salarié</strong>.
+                <strong>le nombre de parts de chaque associé-salarié</strong>.
               </li>
             </ul>
           </p>
 
           <hr>
 
-          <h4>
+          <h5>
             Mode d'emploi
-          </h4>
+          </h5>
           <p>
             Pour utiliser le simulateur il vous siffit de <strong>jouer avec les différents curseurs</strong>, ou d'<strong>ajouter ou retirer des membres</strong>. Les résultats sont calculés en temps réel pour chacun des membres de la coopérative.
           </p>
@@ -84,9 +89,9 @@
           </p>
           <hr>
 
-          <h4>
+          <h5>
             Méthodes de calculs
-          </h4>
+          </h5>
           <p>
             Même s'il cherche à couvrir le maximum de cas possibles ce simulateur ne peut pas couvrir l'intégralité de tous les possibles. Les calculs présentés ici reposent sur les hypothèses suivantes :
           </p>
@@ -100,6 +105,22 @@
               </li>
             </ul>
           </p>
+
+          <hr>
+
+          <h5>
+            Bugs et suggestions
+          </h5>
+          <p>
+            N'hésitez pas à nous écrire à
+            <strong><a href="mailto:contact@multi.coop">contact@multi.coop</a></strong>
+            si vous voyez quelque chose à améliorer,
+            voire à créer une <i>issue</i> sur
+            <strong><a href="https://github.com/multi-coop/multi-site-simulator" target="_blank">
+              le repo du code source ici.
+            </a></strong>
+          </p>
+
         </div>
       </div>
 
