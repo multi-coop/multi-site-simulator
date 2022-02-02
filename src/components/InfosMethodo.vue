@@ -54,24 +54,24 @@
           </ul>
           <p>
             Les variables principales sont :
-            <ul>
-              <li>
-                <strong>le montant des excédents de gestion sur l'exercice</strong> ;
-              </li>
-              <li>
-                <strong>le pourcentage des parts réserves, travail et capital</strong> ;
-              </li>
-              <li>
-                <strong>le nombre de salarié•e•s et d'associé•e•s</strong> ;
-              </li>
-              <li>
-                <strong>le temps de travail sur l'exercice de chaque salarié•e</strong> ;
-              </li>
-              <li>
-                <strong>le nombre de parts de chaque associé•e-salarié•e</strong>.
-              </li>
-            </ul>
           </p>
+          <ul>
+            <li>
+              <strong>le montant des excédents de gestion sur l'exercice</strong> ;
+            </li>
+            <li>
+              <strong>le pourcentage des parts réserves, travail et capital</strong> ;
+            </li>
+            <li>
+              <strong>le nombre de salarié•e•s et d'associé•e•s</strong> ;
+            </li>
+            <li>
+              <strong>le temps de travail sur l'exercice de chaque salarié•e</strong> ;
+            </li>
+            <li>
+              <strong>le nombre de parts de chaque associé•e-salarié•e</strong>.
+            </li>
+          </ul>
           <p>
             Ce <i>widget</i> est en <i>open source</i>. Il est librement réutilisable et intégrable dans n'importe quel site internet.
             <br>
@@ -80,6 +80,7 @@
               la documentation
              </a></strong>.
           </p>
+
           <hr>
 
           <h5>
@@ -102,16 +103,14 @@
           <p>
             Même s'il cherche à couvrir le maximum de cas possibles ce simulateur ne peut pas couvrir l'intégralité de toutes les situations possibles. Les calculs présentés ici reposent sur les hypothèses suivantes :
           </p>
-          <p>
-            <ul>
-              <li>
-                <strong>La part travail (prime de participation) de chaque salarié•e est uniquement indexée sur le temps de travail</strong> : par exemple si un•e salarié•e a travaillé 10 mois aux 4/5emes son temps de travail total cumulé sur l'exercice sera équivalent à 8 mois.
-              </li>
-              <li>
-                <strong>Ni l'anciennté ni le montant du salaire ne sont pris en compte pour calculer les dividendes ou la prime de participation.</strong>
-              </li>
-            </ul>
-          </p>
+          <ul>
+            <li>
+              <strong>La part travail (prime de participation) de chaque salarié•e est uniquement indexée sur le temps de travail</strong> : par exemple si un•e salarié•e a travaillé 10 mois aux 4/5emes son temps de travail total cumulé sur l'exercice sera équivalent à 8 mois.
+            </li>
+            <li>
+              <strong>Ni l'anciennté ni le montant du salaire ne sont pris en compte pour calculer les dividendes ou la prime de participation.</strong>
+            </li>
+          </ul>
 
           <hr>
 
