@@ -48,7 +48,7 @@
     </div>
 
     <!-- TITLE -->
-    <div class="columns is-centered is-multiline">
+    <div class="columns is-centered is-multiline mb-5">
       <div class="column is-two-thirds has-text-centered">
         <p class="title mx-5">
           <b-icon
