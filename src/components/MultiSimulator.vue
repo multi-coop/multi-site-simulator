@@ -61,7 +61,7 @@
         </p>
       </div>
 
-      <div class="column is-full is-italic has-text-centered">
+      <!-- <div class="column is-full is-italic has-text-centered">
         <span class="has-text-grey is-size-6">
           {{ t('reclaim') }}
         </span>
@@ -81,11 +81,14 @@
           >
           {{ t('code') }}
         </b-button>
-      </div>
+      </div> -->
     </div>
 
+    <!-- INFOS METHODO -->
+    <InfosMethodo/>
+
     <!-- INFOS DRAWER -->
-    <InfosDrawer/>
+    <InfosDrawer class="mt-4"/>
 
     <!-- VALUES -->
     <div class="section">
@@ -238,6 +241,32 @@
       >
       {{ t('addMember') }}
     </b-button>
+
+    <!-- CREDITS -->
+    <div class="columns is-centered is-multiline mt-6">
+      <div class="column is-full is-italic has-text-centered">
+        <span class="has-text-grey is-size-6">
+          {{ t('reclaim') }}
+        </span>
+        <a
+          href="https://multi.coop"
+          target="_blank"
+          >
+          multi
+        </a>
+        <b-button
+          icon-left="github"
+          tag="a"
+          href="https://github.com/multi-coop/multi-site-simulator"
+          outlined
+          size="is-small"
+          class="ml-3"
+          >
+          {{ t('code') }}
+        </b-button>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -249,6 +278,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import Member from '@/components/Member'
 import ValueSliderMulti from '@/components/ValueSliderMulti'
 import InfosDrawer from '@/components/InfosDrawer'
+import InfosMethodo from '@/components/InfosMethodo'
 
 import 'buefy/dist/buefy.css'
 
@@ -270,6 +300,7 @@ export default {
     // Button,
     Member,
     InfosDrawer,
+    InfosMethodo,
     ValueSliderMulti
   },
   props: {
