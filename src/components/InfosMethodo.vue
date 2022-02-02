@@ -40,7 +40,7 @@
           </p>
           <ul>
             <li>
-              la part <strong>travail</strong> : participation des salariés aux bénéfices de l´entreprise (minimun 16%);
+              la part <strong>travail</strong> : participation des salarié•e•s aux bénéfices de l´entreprise (minimun 16%);
             </li>
             <li>
               la part <strong>entreprise</strong> : ce sont les réserves impartageables de l'entreprise (minimum 25%);
@@ -49,7 +49,7 @@
               la part <strong>capital</strong>, ou ce qui est redistribué en dividendes aux associé·e·s (maximum 33%, et doit être inférieure aux parts réserves et travail).
             </li>
             <li>
-              En complément <strong>un associé ne peut détenir plus de 50% des parts sociales</strong>;
+              En complément <strong>un•e associé•e ne peut détenir plus de 50% des parts sociales</strong>;
             </li>
           </ul>
           <p>
@@ -62,13 +62,13 @@
                 <strong>le pourcentage des parts réserves, travail et capital</strong> ;
               </li>
               <li>
-                <strong>le nombre de salariés et d'associés</strong> ;
+                <strong>le nombre de salarié•e•s et d'associé•e•s</strong> ;
               </li>
               <li>
-                <strong>le temps de travail sur l'exercice de chaque salarié</strong> ;
+                <strong>le temps de travail sur l'exercice de chaque salarié•e</strong> ;
               </li>
               <li>
-                <strong>le nombre de parts de chaque associé-salarié</strong>.
+                <strong>le nombre de parts de chaque associé•e-salarié•e</strong>.
               </li>
             </ul>
           </p>
@@ -86,13 +86,13 @@
             Mode d'emploi
           </h5>
           <p>
-            Pour utiliser le simulateur il vous siffit de <strong>jouer avec les différents curseurs</strong>, ou d'<strong>ajouter ou retirer des membres</strong>. Les résultats sont calculés en temps réel pour chacun des membres de la coopérative.
+            Pour utiliser le simulateur il vous suffit de <strong>jouer avec les différents curseurs</strong>, ou d'<strong>ajouter ou retirer des membres</strong>. Les résultats sont calculés en temps réel pour chacun des membres de la coopérative.
           </p>
           <p>
             <strong>Si les valeurs entrées ou calculées ne respectent pas une des contraintes légales</strong> (par exemple s'il est indiqué une part allouée aux réserves de moins de 16%) <strong>les valeurs sont alors indiquées en rouge</strong>.
           </p>
           <p>
-            <strong>Pour vérifier la ou les raisons de ces erreurs vous pouvez vous reporter à l'encart "Encadrement légal du sociétariat dans une Scop"</strong>.
+            <strong>Pour comprendre la ou les raisons de ces erreurs vous pouvez vous reporter à l'encart "Encadrement légal du sociétariat dans une Scop"</strong>.
           </p>
           <hr>
 
@@ -100,12 +100,12 @@
             Méthodes de calculs
           </h5>
           <p>
-            Même s'il cherche à couvrir le maximum de cas possibles ce simulateur ne peut pas couvrir l'intégralité de tous les possibles. Les calculs présentés ici reposent sur les hypothèses suivantes :
+            Même s'il cherche à couvrir le maximum de cas possibles ce simulateur ne peut pas couvrir l'intégralité de toutes les situations possibles. Les calculs présentés ici reposent sur les hypothèses suivantes :
           </p>
           <p>
             <ul>
               <li>
-                <strong>La part travail (prime de participation) de chaque salarié est uniquement indexée sur le temps de travail</strong> : par exemple si un salarié a travaillé 10 mois aux 4/5emes son temps de travail total cumulé sur l'exercice sera équivalent à 8 mois.
+                <strong>La part travail (prime de participation) de chaque salarié•e est uniquement indexée sur le temps de travail</strong> : par exemple si un•e salarié•e a travaillé 10 mois aux 4/5emes son temps de travail total cumulé sur l'exercice sera équivalent à 8 mois.
               </li>
               <li>
                 <strong>Ni l'anciennté ni le montant du salaire ne sont pris en compte pour calculer les dividendes ou la prime de participation.</strong>
