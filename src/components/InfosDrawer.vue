@@ -37,10 +37,10 @@
               la part <strong>entreprise</strong> : ce sont les réserves impartageables de l'entreprise, <strong>au minimum 16% des bénéfices</strong> ;
             </li>
             <li>
-              la part <strong>travail</strong> : participation des salariés aux bénéfices de l´entreprise, <strong>au minimum 25% des bénéfices</strong> ;
+              la part <strong>travail</strong> : participation brute des salariés aux bénéfices de l´entreprise, <strong>au minimum 25% des bénéfices</strong> ;
             </li>
             <li>
-              la part <strong>capital</strong>, ou ce qui est redistribué en dividendes aux associé·e·s. Cette part doit être inférieure à la fois à la part dévolue aux réserves et à la part dévolue à la participation, <strong>au maximum 33% des bénéfices</strong> ;
+              la part <strong>capital</strong>, ou ce qui est redistribué en intérêts aux part aux associé·e·s. Cette part doit être inférieure à la fois à la part dévolue aux réserves et à la part dévolue à la participation, <strong>au maximum 33% des bénéfices</strong> ;
             </li>
             <li>
               Attention toutefois, <strong>le montant de la prime de participation est plafonné</strong> et ne doit donc pas dépasser un certain plafond. En 2021, le montant maximum de la prime de participation est de 30 852€

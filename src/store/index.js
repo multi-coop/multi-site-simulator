@@ -56,13 +56,13 @@ export default new Vuex.Store({
         fr: 'Réserves impartageables'
       },
       participation: {
-        fr: 'Participation aux salarié·e·s'
+        fr: 'Participation brute aux salarié·e·s'
       },
       participationSingular: {
         fr: 'Prime de participation'
       },
       dividendes: {
-        fr: 'Dividendes'
+        fr: 'Intérêts aux parts'
       },
       totalShares: {
         fr: 'Total de part aux bénéfices'

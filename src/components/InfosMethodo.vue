@@ -40,13 +40,13 @@
           </p>
           <ul>
             <li>
-              la part <strong>travail</strong> : participation des salarié•e•s aux bénéfices de l´entreprise (minimun 16%);
+              la part <strong>travail</strong> : participation brute des salarié•e•s aux bénéfices de l´entreprise (minimun 16%);
             </li>
             <li>
               la part <strong>entreprise</strong> : ce sont les réserves impartageables de l'entreprise (minimum 25%);
             </li>
             <li>
-              la part <strong>capital</strong>, ou ce qui est redistribué en dividendes aux associé·e·s (maximum 33%, et doit être inférieure aux parts réserves et travail).
+              la part <strong>capital</strong>, ou ce qui est redistribué aux associé·e·s au titre d'intérêts aux parts (maximum 33%, et doit être inférieure aux parts réserves et travail).
             </li>
             <li>
               En complément <strong>un•e associé•e ne peut détenir plus de 50% des parts sociales</strong>;
