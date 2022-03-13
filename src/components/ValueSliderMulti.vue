@@ -63,9 +63,10 @@
           :min="options.min"
           :size="`is-small`"
           controls-position="compact"
+          class="mt-2"
           @change="changeVal"
           expanded
-          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${unitText}`"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()} ${unitText}`"
         />
 
         <!-- SLIDER INPUT -->
@@ -80,7 +81,7 @@
           ticks
           :size="`is-small`"
           @input="changeVal"
-          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${unitText}`"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()} ${unitText}`"
         />
 
       </b-field>
@@ -119,6 +120,10 @@ export default {
     }
   },
   watch: {
+    val (next) {
+      // console.log('C - ValueSliderMulti > watch > val > next :', next)
+      this.numberInput = next
+    },
     valFromStore (next) {
       // console.log('C - ValueSliderMulti > watch > valFromStore > prev :', prev)
       // console.log('C - ValueSliderMulti > watch > valFromStore > next :', next)
@@ -127,7 +132,9 @@ export default {
     repartNeedsReset (next) {
       // console.log('C - ValueSliderMulti > watch > repartNeedsReset > next :', next)
       // console.log('C - ValueSliderMulti > watch > repartNeedsReset > this.keyVal :', this.keyVal)
-      this.numberInput = this.repartDefaults[this.keyVal]
+      if (!this.localChange) {
+        this.numberInput = this.repartDefaults[this.keyVal]
+      }
     }
   },
   beforeMount () {

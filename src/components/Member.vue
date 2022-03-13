@@ -313,14 +313,19 @@ export default {
   },
   watch: {
     teamNeedsReset (next) {
-      // console.log('\nC - Member > watch > teamNeedsReset > next :', next)
-      // console.log('C - Member > watch > teamNeedsReset > this.keyMember :', this.keyMember)
       if (next.includes(this.keyMember)) {
-        // const memberDefault = this.getMemberDefault(this.keyMember)
+        // console.log('\nC - Member > watch > teamNeedsReset > next :', next)
+        // console.log('\nC - Member > watch > teamNeedsReset > this.keyMember :', this.keyMember)
+        const memberDefault = this.getMemberDefault(this.keyMember)
         // console.log('C - Member > watch > teamNeedsReset > memberDefault :', memberDefault)
-        this.name = this.dataMember.name
-        this.parts = this.dataMember.parts
-        this.workTime = this.dataMember.workTime
+        // this.name = this.dataMember.name
+        // this.parts = this.dataMember.parts
+        // this.workTime = this.dataMember.workTime
+        // this.yearTime = this.dataMember.yearTime
+        this.name = memberDefault.name
+        this.parts = memberDefault.parts
+        this.workTime = memberDefault.workTime
+        this.yearTime = memberDefault.yearTime
         this.deleteMemberFromNeedsReset(this.keyMember)
       }
     }
@@ -350,7 +355,7 @@ export default {
     ...mapGetters({
       totals: 'totals',
       getShares: 'getShares',
-      // getMemberDefault: 'getMemberDefault',
+      getMemberDefault: 'getMemberDefault',
       t: 'getTranslation'
     }),
     memberObject () {

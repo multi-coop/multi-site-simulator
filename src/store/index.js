@@ -165,10 +165,10 @@ export default new Vuex.Store({
     },
     getTranslation: (state) => (key) => {
       return state.dict[key][state.locale] || key
+    },
+    getMemberDefault: (state) => (keyMember) => {
+      return state.teamMembersDefault.find(m => m.key === keyMember)
     }
-    // getMemberDefault: (state) => (keyMember) => {
-    //   return state.teamMembersDefault.find(m => m.key === keyMember)
-    // }
   },
   mutations: {
     setValue (state, { space, value }) {

@@ -196,6 +196,7 @@
       </div>
     </div>
 
+    <!-- REINITIALIZATIONS -->
     <div class="columns is-centered mt-3">
       <div class="column is-one-third">
         <b-button
