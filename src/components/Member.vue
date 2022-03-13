@@ -80,7 +80,7 @@
           :sizeText="'small'"
           :localChange="true"
           @changeVal="updateMemberVal"
-          :debug="true"
+          :debug="false"
         />
         <ValueSliderMulti
           :val="yearTime"

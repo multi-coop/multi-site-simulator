@@ -9,21 +9,21 @@ export default new Vuex.Store({
 
     partValue: 25,
     partMax: 200,
-    partValueOptions: { min: 10, max: 80, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€' },
+    partValueOptions: { min: 10, max: 80, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€', translateUnit: false },
 
     benefs: 0,
-    benefsOptions: { min: 0, max: 500000, minLimit: 0, maxLimit: false, ticks: 10000, unit: '€' },
+    benefsOptions: { min: 0, max: 500000, minLimit: 0, maxLimit: false, ticks: 10000, unit: '€', translateUnit: false },
 
     reserves: 40,
     participation: 50,
     dividendes: 10,
-    reservesOptions: { min: 10, max: 80, minLimit: 16, maxLimit: 75, ticks: 5, unit: '%', substract: 'participation' },
-    participationOptions: { min: 20, max: 90, minLimit: 25, maxLimit: 84, ticks: 5, unit: '%', substract: 'reserves' },
-    dividendesOptions: { min: 0, max: 40, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', substract: 'reserves' },
+    reservesOptions: { min: 10, max: 80, minLimit: 16, maxLimit: 75, ticks: 5, unit: '%', translateUnit: false, substract: 'participation' },
+    participationOptions: { min: 20, max: 90, minLimit: 25, maxLimit: 84, ticks: 5, unit: '%', translateUnit: false, substract: 'reserves' },
+    dividendesOptions: { min: 0, max: 40, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', translateUnit: false, substract: 'reserves' },
 
-    workTimeOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 100, ticks: 5, unit: '%' },
-    yearTimeOptions: { min: 0, max: 12, minLimit: 0, maxLimit: 12, ticks: 1, unit: 'months' },
-    partsOptions: { min: 0, max: 200, minLimit: 0, maxLimit: 200, ticks: 10, unit: 'partsShort' },
+    workTimeOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 100, ticks: 5, unit: '%', translateUnit: false },
+    yearTimeOptions: { min: 0, max: 12, minLimit: 0, maxLimit: 12, ticks: 1, unit: 'months', translateUnit: true },
+    partsOptions: { min: 0, max: 200, minLimit: 0, maxLimit: 200, ticks: 10, unit: 'partsShort', translateUnit: true },
 
     repartDefaults: {},
     repartNeedsReset: [],

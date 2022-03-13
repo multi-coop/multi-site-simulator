@@ -65,7 +65,7 @@
           controls-position="compact"
           @change="changeVal"
           expanded
-          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${t(options.unit)}`"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${unitText}`"
         />
 
         <!-- SLIDER INPUT -->
@@ -80,7 +80,7 @@
           ticks
           :size="`is-small`"
           @input="changeVal"
-          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${t(options.unit)}`"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${unitText}`"
         />
 
       </b-field>
@@ -146,6 +146,9 @@ export default {
     }),
     valFromStore () {
       return this.getVal(this.keyVal)
+    },
+    unitText () {
+      return this.options.translateUnit ? this.t(this.options.unit) : this.options.unit
     }
   },
   methods: {
