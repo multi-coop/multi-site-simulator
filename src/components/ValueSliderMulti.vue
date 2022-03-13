@@ -1,32 +1,76 @@
 <template>
   <section class="my-4">
+
+    <!-- DEBUGGING -->
+    <div
+      v-if="debug"
+      >
+      <div class="columns is-multiline">
+        <div class="column">
+          <p>
+            keyVal :
+            <code>{{ keyVal }}</code>
+          </p>
+          <p>
+            val :
+            <code>{{ val }}</code>
+          </p>
+          <p>
+            options :
+            <code>{{ options }}</code>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDER BLOCK -->
     <div
       class="block"
       >
-      <!-- {{ keyVal }} -
-      {{ repartDefaults }} -->
-      <!-- <b-field
-        :label="t(keyVal)"
-        class="mb-5"
-        >
+      <b-field>
+
+        <!-- LABEL -->
+        <template
+          slot="label"
+          >
+          <div
+            :class="`is-flex is-align-items-center`"
+            >
+            <span
+              :class="`is-${sizeText}`">
+              {{ t(keyVal) }}
+            </span>
+            <b-tooltip
+              :label="t('editValue')"
+              >
+              <b-button
+                icon-left="pencil"
+                size="is-small"
+                type="is-light"
+                class="ml-3 mb-0"
+                @click="showUserEdit = !showUserEdit"
+                >
+              </b-button>
+            </b-tooltip>
+          </div>
+        </template>
+
+        <!-- NUMBER INPUT -->
         <b-numberinput
+          v-show="showUserEdit"
           v-model="numberInput"
           :max="options.max"
           :min="options.min"
-          :step="options.ticks"
-          size="is-small"
+          :size="`is-small`"
           controls-position="compact"
-          controls-rounded
-          @input="changeVal"
+          @change="changeVal"
           expanded
-          :custom-formatter="(valTxt) => valTxt + options.unit"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${t(options.unit)}`"
         />
-      </b-field> -->
-      <b-field
-        :label="t(keyVal)"
-        class=""
-        >
+
+        <!-- SLIDER INPUT -->
         <b-slider
+          v-show="!showUserEdit"
           v-model="numberInput"
           :max="options.max"
           :min="options.min"
@@ -34,10 +78,11 @@
           :tooltip="false"
           indicator
           ticks
-          size="is-small"
+          :size="`is-small`"
           @input="changeVal"
-          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}${options.unit}`"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()}.${t(options.unit)}`"
         />
+
       </b-field>
     </div>
   </section>
@@ -57,11 +102,10 @@ export default {
   name: 'ValueSliderMulti',
   props: {
     keyVal: String,
-    val: Number
-    // unit: String,
-    // min: Number,
-    // max: Number,
-    // ticks: Number
+    val: Number,
+    sizeText: String,
+    localChange: Boolean,
+    debug: Boolean
   },
   components: {
     // Slider,
@@ -69,6 +113,7 @@ export default {
   },
   data () {
     return {
+      showUserEdit: false,
       numberInput: 0,
       options: undefined
     }
@@ -86,20 +131,15 @@ export default {
     }
   },
   beforeMount () {
-    // this.numberInput = JSON.parse(JSON.stringify(this.val))
     this.numberInput = this.val
     this.options = this.getValOptions(this.keyVal)
   },
   computed: {
     ...mapState({
-      // benefsEntreprise: (state) => state.benefs
-      // valStore: (state) => state[this.keyVal]
       repartNeedsReset: 'repartNeedsReset',
       repartDefaults: 'repartDefaults'
     }),
     ...mapGetters({
-      // repartBenefs: 'repartBenefs',
-      // totals: 'totals',
       getVal: 'getKeyVal',
       getValOptions: 'getValOptions',
       t: 'getTranslation'
@@ -113,11 +153,15 @@ export default {
       populateRepart: 'populateRepart'
     }),
     changeVal (input) {
-      // this.numberInput = input
-      this.populateRepart({
+      const updated = {
         space: this.keyVal,
         value: this.numberInput
-      })
+      }
+      if (this.localChange) {
+        this.$emit('changeVal', updated)
+      } else {
+        this.populateRepart(updated)
+      }
     }
   }
 }

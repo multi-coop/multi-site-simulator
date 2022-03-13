@@ -22,6 +22,8 @@ export default new Vuex.Store({
     dividendesOptions: { min: 0, max: 40, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', substract: 'reserves' },
 
     workTimeOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 100, ticks: 5, unit: '%' },
+    yearTimeOptions: { min: 0, max: 12, minLimit: 0, maxLimit: 12, ticks: 1, unit: 'months' },
+    partsOptions: { min: 0, max: 200, minLimit: 0, maxLimit: 200, ticks: 10, unit: 'partsShort' },
 
     repartDefaults: {},
     repartNeedsReset: [],
@@ -45,6 +47,9 @@ export default new Vuex.Store({
       },
       close: {
         fr: 'Fermer'
+      },
+      editValue: {
+        fr: 'Éditer la valeur'
       },
       code: {
         fr: 'Code source'

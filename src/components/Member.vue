@@ -74,7 +74,33 @@
           />
         </b-field> -->
 
-        <b-field
+        <ValueSliderMulti
+          :val="workTime"
+          :keyVal="'workTime'"
+          :sizeText="'small'"
+          :localChange="true"
+          @changeVal="updateMemberVal"
+          :debug="true"
+        />
+        <ValueSliderMulti
+          :val="yearTime"
+          :keyVal="'yearTime'"
+          :sizeText="'small'"
+          :localChange="true"
+          @changeVal="updateMemberVal"
+          :debug="false"
+        />
+        <ValueSliderMulti
+          :val="parts"
+          :keyVal="'parts'"
+          :sizeText="'small'"
+          :localChange="true"
+          @changeVal="updateMemberVal"
+          :debug="false"
+        />
+
+        <!--
+          <b-field
           :label="t('workTime')"
           class="mb-5"
           custom-class="is-small"
@@ -129,7 +155,7 @@
             :custom-formatter="(valTxt) => `${valTxt}.${t('partsShort')}`"
             @input="updateMember()"
           />
-        </b-field>
+        </b-field> -->
 
       </section>
 
@@ -257,8 +283,13 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 
+import ValueSliderMulti from '@/components/ValueSliderMulti'
+
 export default {
   name: 'Member',
+  components: {
+    ValueSliderMulti
+  },
   props: {
     memberData: Object,
     keyMember: String
@@ -309,7 +340,12 @@ export default {
       benefsOptions: (state) => state.benefsOptions,
       reservesOptions: (state) => state.reservesOptions,
       participationOptions: (state) => state.participationOptions,
-      dividendesOptions: (state) => state.dividendesOptions
+      dividendesOptions: (state) => state.dividendesOptions,
+
+      workTimeOptions: (state) => state.workTimeOptions,
+      monthTimeOptions: (state) => state.monthTimeOptions,
+      partsOptions: (state) => state.partsOptions
+
     }),
     ...mapGetters({
       totals: 'totals',
@@ -355,6 +391,11 @@ export default {
         div: div,
         sum: Math.round(sum)
       }
+    },
+    updateMemberVal (event) {
+      // console.log('C - Member > updateMemberVal > event :', event)
+      this[event.space] = event.value
+      this.updateMember()
     },
     updateMember () {
       this.populateTeamMembers({ action: 'update', member: this.memberObject })
