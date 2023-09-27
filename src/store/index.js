@@ -12,7 +12,7 @@ export default new Vuex.Store({
     partValueOptions: { min: 10, max: 80, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€', translateUnit: false },
 
     benefs: 0,
-    benefsOptions: { min: 0, max: 500000, minLimit: 0, maxLimit: false, ticks: 10000, unit: '€', translateUnit: false },
+    benefsOptions: { min: 0, max: 200000, minLimit: 0, maxLimit: false, ticks: 500, unit: '€', translateUnit: false },
 
     reserves: 40,
     participation: 50,
@@ -40,7 +40,7 @@ export default new Vuex.Store({
 
     dict: {
       title: {
-        fr: 'Simulateur de répartition des excédents de gestion de la coopérative'
+        fr: 'Simulateur de répartition des excédents nets de gestion de la coopérative'
       },
       reclaim: {
         fr: 'Un widget open source codé par'
@@ -70,7 +70,7 @@ export default new Vuex.Store({
         fr: 'Intérêts aux parts'
       },
       totalShares: {
-        fr: 'Total de part aux bénéfices'
+        fr: 'Total de part aux excédents nets de gestion'
       },
       name: {
         fr: 'Nom'

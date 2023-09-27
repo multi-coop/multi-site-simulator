@@ -1,6 +1,6 @@
 # multi-site-simulators
 
-A widget to simulate shares at multi.
+A widget to simulate shares in a french cooperative (SCOP).
 
 That's a widget you can include in any html page...
 
