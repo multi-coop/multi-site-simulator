@@ -37,7 +37,7 @@
               la part <strong>entreprise</strong> : ce sont les réserves impartageables de l'entreprise, <strong>au minimum 16% des excédents nets de gestion</strong> ;
             </li>
             <li>
-              la part <strong>travail</strong> : participation brute des salariés aux excédents nets de gestion de l´entreprise, <strong>au minimum 25% des excédents nets de gestion</strong> ;
+              la part <strong>travail</strong> : participation brute aux salariés aux excédents nets de gestion de l´entreprise, <strong>au minimum 25% des excédents nets de gestion</strong> ;
             </li>
             <li>
               la part <strong>capital</strong>, ou ce qui est redistribué en intérêts aux part aux associé·e·s. Cette part doit être inférieure à la fois à la part dévolue aux réserves et à la part dévolue à la participation, <strong>au maximum 33% des excédents nets de gestion</strong> ;

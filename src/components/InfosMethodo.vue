@@ -110,7 +110,7 @@
               <strong>La part travail (prime de participation) de chaque salarié•e est uniquement indexée sur le temps de travail</strong> : par exemple si un•e salarié•e a travaillé 10 mois aux 4/5emes son temps de travail total cumulé sur l'exercice sera équivalent à 8 mois.
             </li>
             <li>
-              <strong>Ni l'anciennté ni le montant du salaire ne sont pris en compte pour calculer les dividendes ou la prime de participation.</strong>
+              <strong>Ni l'anciennté ni le montant du salaire ne sont pris en compte pour calculer les intérêts aux parts ou la prime de participation.</strong>
             </li>
           </ul>
 
