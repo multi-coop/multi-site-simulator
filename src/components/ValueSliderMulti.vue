@@ -66,7 +66,7 @@
           class="mt-2"
           @change="changeVal"
           expanded
-          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()} ${unitText}`"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()} ${unitText}`"
         />
 
         <!-- SLIDER INPUT -->
@@ -81,7 +81,7 @@
           ticks
           :size="`is-small`"
           @input="changeVal"
-          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()} ${unitText}`"
+          :custom-formatter="(valTxt) => `${valTxt.toLocaleString()} ${unitText}`"
         />
 
       </b-field>
