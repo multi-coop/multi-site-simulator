@@ -37,11 +37,12 @@
             :class="`is-flex is-align-items-center`"
             >
             <span
-              :class="`is-${sizeText}`">
+              :class="`is-${sizeText || 'medium'}`">
               {{ t(keyVal) }}
             </span>
             <b-tooltip
               :label="t('editValue')"
+              type="is-white"
               >
               <b-button
                 icon-left="pencil"
