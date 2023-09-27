@@ -30,7 +30,7 @@
             Introduction
           </h5>
           <p>
-            Ce simulateur de répartition des excédents nets de gestion d'une Scop est un outil de type <i>widget</i> qui vise à jouer avec les différentes variables permmettant de calculer les parts de chaque personne impliquée dans la coopérative.
+            Ce simulateur de répartition des excédents nets de gestion d'une Scop est un outil de type <i>widget</i> qui vise à jouer avec les différentes variables permettant de calculer les parts de chaque personne impliquée dans la coopérative.
           </p>
           <p>
             Nous avons tenté d'intégrer à ce simulateur toutes les obligations légales propres aux Scop, et d'en rendre l'usage le plus simple possible.
@@ -110,7 +110,7 @@
               <strong>La part travail (prime de participation) de chaque salarié•e est uniquement indexée sur le temps de travail</strong> : par exemple si un•e salarié•e a travaillé 10 mois aux 4/5emes son temps de travail total cumulé sur l'exercice sera équivalent à 8 mois.
             </li>
             <li>
-              <strong>Ni l'anciennté ni le montant du salaire ne sont pris en compte pour calculer les intérêts aux parts ou la prime de participation.</strong>
+              <strong>Ni l'ancienneté ni le montant du salaire ne sont pris en compte pour calculer les intérêts aux parts ou la prime de participation.</strong>
             </li>
           </ul>
 

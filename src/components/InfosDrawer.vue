@@ -27,7 +27,7 @@
       <div class="card-content">
         <div class="content">
           <p>
-            Juridiquement, une Scop (Société coopérative et participative) est une société coopérative de forme SA, SARL ou SAS, dont les salarié•e•s sont les associé•e•s majoritaires et le pouvoir y est exercé démocratiquement.
+            Juridiquement, une Scop (Société coopérative et participative) est une société coopérative de forme SA, SARL ou SAS, dont les salarié•e•s sont les associé•e•s majoritaires et où le pouvoir y est exercé démocratiquement ("1 personne = 1 voix").
           </p>
           <p>
             <strong>Les excédents nets de gestion de la Scop sont dès le 1er euro obligatoirement répartis en trois parts :</strong>
@@ -37,7 +37,7 @@
               la part <strong>entreprise</strong> : ce sont les réserves impartageables de l'entreprise, <strong>au minimum 16% des excédents nets de gestion</strong> ;
             </li>
             <li>
-              la part <strong>travail</strong> : participation brute aux salariés aux excédents nets de gestion de l´entreprise, <strong>au minimum 25% des excédents nets de gestion</strong> ;
+              la part <strong>travail</strong> : participation brute des salarié•e•s aux excédents nets de gestion de l´entreprise, <strong>au minimum 25% des excédents nets de gestion</strong> ;
             </li>
             <li>
               la part <strong>capital</strong>, ou ce qui est redistribué en intérêts aux part aux associé·e·s. Cette part doit être inférieure à la fois à la part dévolue aux réserves et à la part dévolue à la participation, <strong>au maximum 33% des excédents nets de gestion</strong> ;
@@ -60,7 +60,7 @@
               <strong>les salarié•e•s-associé•e•s doivent détenir au minimum 51% du capital social</strong> ;
             </li>
             <li>
-              <strong>aucun associé•e ne peut être majoritaire et détenir plus de 50% des parts sociales</strong> ;
+              <strong>aucun•e associé•e ne peut être majoritaire et détenir plus de 50% des parts sociales</strong> ;
             </li>
             <li>
               La valeur nominale d´une part sociale doit être comprise entre 16 € et 75 € ;
