@@ -9,19 +9,21 @@ export default new Vuex.Store({
 
     partValue: 25,
     partMax: 200,
-    partValueOptions: { min: 10, max: 80, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€' },
+    partValueOptions: { min: 10, max: 80, minLimit: 20, maxLimit: 75, ticks: 5, unit: '€', translateUnit: false },
 
     benefs: 0,
-    benefsOptions: { min: 0, max: 500000, minLimit: 0, maxLimit: false, ticks: 10000, unit: '€' },
+    benefsOptions: { min: 0, max: 200000, minLimit: 0, maxLimit: false, ticks: 500, unit: '€', translateUnit: false },
 
     reserves: 40,
     participation: 50,
     dividendes: 10,
-    reservesOptions: { min: 10, max: 80, minLimit: 16, maxLimit: 75, ticks: 5, unit: '%', substract: 'participation' },
-    participationOptions: { min: 20, max: 90, minLimit: 25, maxLimit: 84, ticks: 5, unit: '%', substract: 'reserves' },
-    dividendesOptions: { min: 0, max: 40, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', substract: 'reserves' },
+    reservesOptions: { min: 10, max: 80, minLimit: 16, maxLimit: 75, ticks: 5, unit: '%', translateUnit: false, substract: 'participation' },
+    participationOptions: { min: 20, max: 90, minLimit: 25, maxLimit: 84, ticks: 5, unit: '%', translateUnit: false, substract: 'reserves' },
+    dividendesOptions: { min: 0, max: 40, minLimit: 0, maxLimit: 33, ticks: 5, unit: '%', translateUnit: false, substract: 'reserves' },
 
-    workTimeOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 100, ticks: 5, unit: '%' },
+    workTimeOptions: { min: 0, max: 100, minLimit: 0, maxLimit: 100, ticks: 5, unit: '%', translateUnit: false },
+    yearTimeOptions: { min: 0, max: 12, minLimit: 0, maxLimit: 12, ticks: 1, unit: 'months', translateUnit: true },
+    partsOptions: { min: 0, max: 200, minLimit: 0, maxLimit: 200, ticks: 10, unit: 'partsShort', translateUnit: true },
 
     repartDefaults: {},
     repartNeedsReset: [],
@@ -38,13 +40,16 @@ export default new Vuex.Store({
 
     dict: {
       title: {
-        fr: 'Simulateur de répartition des excédents de gestion de la coopérative'
+        fr: 'Simulateur de répartition des excédents nets de gestion de la coopérative'
       },
       reclaim: {
         fr: 'Un widget open source codé par'
       },
       close: {
         fr: 'Fermer'
+      },
+      editValue: {
+        fr: 'Éditer la valeur'
       },
       code: {
         fr: 'Code source'
@@ -56,16 +61,16 @@ export default new Vuex.Store({
         fr: 'Réserves impartageables'
       },
       participation: {
-        fr: 'Participation aux salarié·e·s'
+        fr: 'Participation brute aux salarié·e·s'
       },
       participationSingular: {
         fr: 'Prime de participation'
       },
       dividendes: {
-        fr: 'Dividendes'
+        fr: 'Intérêts aux parts'
       },
       totalShares: {
-        fr: 'Total de part aux bénéfices'
+        fr: 'Total de part aux excédents nets de gestion'
       },
       name: {
         fr: 'Nom'
@@ -160,10 +165,10 @@ export default new Vuex.Store({
     },
     getTranslation: (state) => (key) => {
       return state.dict[key][state.locale] || key
+    },
+    getMemberDefault: (state) => (keyMember) => {
+      return state.teamMembersDefault.find(m => m.key === keyMember)
     }
-    // getMemberDefault: (state) => (keyMember) => {
-    //   return state.teamMembersDefault.find(m => m.key === keyMember)
-    // }
   },
   mutations: {
     setValue (state, { space, value }) {

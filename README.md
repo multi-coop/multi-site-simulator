@@ -1,6 +1,6 @@
 # multi-site-simulators
 
-A widget to simulate shares at multi.
+A widget to simulate shares in a french cooperative (SCOP).
 
 That's a widget you can include in any html page...
 
@@ -13,9 +13,15 @@ Widgets need two files in order to work :
 - `app.js`
 - `app.css`
 
-Add those two files to your html head.
+Add those two files to your html head, like this if the widget code is deployed on `https://multi-site-simulator-test.netlify.app`:
 
-Widgets can now be called directly into the page as custom html elements.
+```html
+<script src="https://multi-site-simulator-test.netlify.app/js/app.js" type="text/javascript"></script>
+
+<link type="text/css" href="ttps://multi-site-simulator-test.netlify.app/js/app.css" rel="stylesheet">
+```
+
+Widgets can then be called directly into the page as custom html elements.
 
 ---
 
